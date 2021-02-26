@@ -1,0 +1,23 @@
+//General
+@import'./General/Reset';
+@import './General/Variables';
+@import './General/Mixin';
+@import './General/Grid';
+@import './General/Font';
+@import './General/Base';
+
+//Common
+@import './Common/loader';
+
+//Sections
+@import './General/Header';
+@import './General/Navbar';
+
+//Main Page
+@import './Carousel.scss';
+@import './ProductContent.scss';
+
+
+
+
+

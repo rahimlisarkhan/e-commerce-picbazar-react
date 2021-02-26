@@ -1,0 +1,22 @@
+// GRID AREA
+.container-H{ grid-area: H;};
+.container-N{ grid-area: N;};
+.container-C{ grid-area: C;};
+
+
+// PARENT CONTAINER
+.container {
+    display: grid;
+    grid-template:
+        'H H'
+        'N C'
+        / 15% 85%;
+
+    @include respond(phone){
+        grid-template:
+        'H'
+        'N'
+        'C'
+        / 100% !important;
+    }
+}

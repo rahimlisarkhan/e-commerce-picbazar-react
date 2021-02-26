@@ -1,0 +1,57 @@
+//FLEX BOX MODEL
+@mixin flex-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@mixin flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-col-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@mixin flex-col-evenly {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+@mixin flex-row-evenly {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+
+//Other
+@mixin radius($par...){
+    -webkit-border-radius: $par;
+    -moz-border-radius: $par;
+    -ms-border-radius: $par;
+    border-radius: $par;
+   }
+
+//RESPONSIVE DESIGN | MEDIA QUERY
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media only screen and (max-width: 37.5em) { @content }  //600px
+    };
+    @if $breakpoint == tab-port {
+        @media only screen and (max-width: 56.25em) { @content }  //900px
+    };
+    @if $breakpoint == tab-land {
+        @media only screen and (max-width: 75em) { @content }   //1200px
+    };
+    @if $breakpoint == big-desktop {
+        @media only screen and (max-width: 112.5em) { @content }   //1800px
+    };
+}
