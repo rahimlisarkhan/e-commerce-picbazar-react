@@ -12,7 +12,7 @@ let ProductList = () => {
     <>
      <div className="product-content__products__card">
         <img src={product} alt="product" />
-        <img src={product} className={countShow ? 'addProduct showAdd' : 'addProduct'} alt='product'/>
+        <img src={product} className={countShow ? 'addProduct showAdd' : 'addProduct'} alt='subproduct'/>
         <h2>lime</h2>
         <span>12 pc(s)</span>
         <div className="basket">

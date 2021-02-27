@@ -56,7 +56,7 @@
 
             .addProduct{
                 position: absolute;
-                width: 25%;
+                width: 40%;
                 top: 0;
                 left: 0;
                 opacity: 0;
@@ -141,6 +141,6 @@
 
 @keyframes myfirst {
     0%{left:0; top:0; opacity:1; }
-    95%{left:400%; top:40%; }
-    100%{opacity:0;}
+    95%{left:450%; top:50%; }
+    100%{opacity:0; width: 15%;}
   }
