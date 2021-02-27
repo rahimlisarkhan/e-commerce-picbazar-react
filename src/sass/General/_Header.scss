@@ -3,6 +3,9 @@
     padding: 2.5rem;
     flex-direction: row !important;
     position: relative;
+    z-index: 4;
+    background-color: #ffffffc4;
+
     &__logo-content{
         width: 50%;
         display: flex;
@@ -33,6 +36,7 @@
             background-color: rgb(255, 255, 255);
             width: 10%;
             height: 25rem;
+            
             display: flex;
             flex-direction: column;
             justify-content:space-evenly;
@@ -66,12 +70,12 @@
             outline: none !important;
             border: none !important;
             font-size: 1.6rem !important;
+            
 
-
-            svg{
+            img{
                 width: 2rem !important;
                 margin-right: .4rem;
-                height: auto;
+                height: 1.3rem;
             }
         }
 
@@ -108,22 +112,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(black, .4);
-    .form-content{
-        width: 25%;
-        height: 55rem;
-        transform: scale(0);
-        background-color: rgb(255, 255, 255);
-    }
+    background-color: rgba(black, .5);
 
     .close{
         position: absolute;
+        background-color: white;
+        border-radius: 50%;
+        padding: 1rem;
+        font-size: 2rem !important;
         top: 2%;
         right: 2%;
+
+        &:hover{
+            background-color: rgb(243, 243, 243);
+        }
     }
 }
 
 
 .join-show{
-    transform: scale(1) !important ;
+    display: none;
 }

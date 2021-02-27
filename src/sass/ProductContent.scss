@@ -11,9 +11,6 @@
         background-color: rgb(255, 255, 255);
     }
     &__category__list{
-        // position: fixed;
-        // top: 5%;
-        // left: 0;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -34,6 +31,8 @@
             cursor: pointer;
             &:hover{color: $color-green}
         }
+
+       
     }
 
     &__products{
@@ -48,11 +47,28 @@
             width: 17%;
             margin: 1rem;
             height: auto;
+            position: relative;
             display: flex;
             padding: 1rem;
             flex-direction: column;
             background-color:white;
             box-shadow:0 1rem 2rem rgba(0, 0, 0, 0.100);
+
+            .addProduct{
+                position: absolute;
+                width: 25%;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                z-index: 99;
+                height: auto;
+              
+
+            }
+            .showAdd{
+                animation: myfirst 1.5s   infinite;
+                animation-iteration-count: 1;
+            }
 
             h2{
                 font-size: 1.5rem;
@@ -67,12 +83,29 @@
 
             .basket{
                 display: flex;
+                align-items: center;
                 justify-content: space-between;
 
                 span{
                     color: $color-green;
                     font-size: 1.7rem;
                     font-weight: bold;
+                }
+                .cart{
+                    width: 33%;
+                    display: flex;
+                    cursor: pointer;
+                    font-size: 1.7rem;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: .8rem 1.2rem;
+                    border-radius: 1rem;
+                    border: .1rem solid rgba(235, 235, 235, 0.74);
+                
+                    &:hover{
+                        background-color: $color-green;
+                        color: white;
+                    }
                 }
             }
         }
@@ -96,3 +129,18 @@
         }
     }
 }
+
+
+.bg-green{
+    background-color: $color-green !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+
+
+@keyframes myfirst {
+    0%{left:0; top:0; opacity:1; }
+    90%{left:400%; top:40%; }
+    100%{opacity:0;}
+  }

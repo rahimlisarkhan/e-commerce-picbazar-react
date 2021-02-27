@@ -19,6 +19,7 @@
     "react-select": "^4.1.0",
     "react-slick": "^0.28.0",
     "react-toastify": "^7.0.3",
+    "react-video-tag": "0.0.10",
     "reactstrap": "^8.9.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",

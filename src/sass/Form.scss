@@ -1,0 +1,92 @@
+.form-content{
+    width: 25%;
+    height: 55rem;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 .1rem 2rem rgba(0, 0, 0, 0.479);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .form-desc{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        h1{
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: .2rem ;
+            color: $color-green;
+        }
+
+        h2{
+            font-size: 1.8rem;
+            color: $color-text-dark;
+            line-height: 1.2;
+            text-transform: capitalize !important;
+            margin: 1rem 0;
+        }
+    }
+    
+    .form-group{
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 70%;
+        height: 5.5rem;
+        background-color: rgb(243, 243, 243);
+  
+        .joinIcon{
+            position: absolute;
+            top: 20%;
+            left: 2%;
+            font-size: 3rem;
+            color: $color-green;
+        }
+        .password-view{
+            position: absolute;
+            top: 30%;
+            cursor: pointer;
+            font-size: 2.5rem;
+            color: $color-green;
+            right: 2%;
+        }
+        input{
+            border: none;
+            background-color: transparent;
+            text-align: center;
+            font-size: 2.2rem;
+            width: 100%;
+            height: 100%;
+            outline: none;
+
+            &:focus{
+                box-shadow: 0 .2rem 2rem rgba($color-green, .5)
+            }
+        }
+    }
+    button{
+        width: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold !important;
+        height: 5.5rem;
+        font-size: 2.7rem !important;
+        color: white;
+        text-align: center;
+        background-color: $color-green;
+
+        &:hover{
+            background-color: rgb(2, 134, 108);
+            transform: scale(1.02);
+        }
+    }
+}
+
+.form-size{
+    height: 60rem !important;
+}

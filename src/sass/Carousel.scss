@@ -3,27 +3,83 @@
     flex-direction: column;
     background-color:white;
     border:.1rem solid rgb(236, 236, 236);
-
+    span{
+        position: absolute;
+        top: 0;
+        background-color: rgb(255, 255, 255);
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+            .bg-video{
+                width: 100%;
+                height: 100%;
+                opacity: .5;
+                object-fit: cover;
+            }
+        }
     &__desc{
         display: flex;
         justify-content: center;
         align-items: center;
-        background-image: url('../img/headback.png');
         background-size:cover; 
         background-repeat: no-repeat;
-
-        height: 95rem;
+        z-index: 3;
+        height: 80rem;
         font-size: 5rem;
         flex-direction: column;
-
+        color: white;
+        text-shadow: 0 .1rem 1rem black;
         h1{
             font-weight: bold;
+          
         }
 
         p{
+            width: 30%;
+            text-align: center;
             margin: 2rem;
-            font-size: 2rem;
-            color: $color-text-dark;
+            font-size: 2.5rem;
+        }
+
+        .input-group{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+           width: 40%;
+           height: 5rem;
+           margin-top: 3rem;
+           box-shadow: 0 .1rem 2rem rgba(0, 0, 0, 0.432);
+           border-radius: 2rem;
+            input{
+                width: 80%;
+                height: 100%;
+                border: none;
+                font-size: 2rem;
+                text-align: center;
+                outline: none;
+                border-radius: 2rem 0 0 2rem ;
+            }
+            button{
+                width: 20%;
+                border: none;
+                height: 100%;
+                background-color: $color-green;
+                color: white;
+                display: flex;
+                font-weight: bold !important;
+                align-items: center;
+                border-radius: 0 2rem 2rem 0;
+                justify-content: space-evenly;
+                padding: 0 2rem;
+                cursor: pointer;
+                font-size: 1.8rem;
+
+                &:hover{
+                    background-color:rgb(8, 131, 106);
+                    transform: scale(1.05);
+                }
+            }
         }
     }
 
@@ -33,11 +89,15 @@
         justify-content: space-evenly;
         align-items: center !important;
         margin: 0 auto;
-        margin-top: 5rem;
+        margin-top: 9rem;
 
+        div{
+            width:100%;
+        }
         img{
             background-color: yellow;
         }
 
     }
 }
+
