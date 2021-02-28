@@ -104,15 +104,17 @@
 
 //join popup
 .popup-join{
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: -200%;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
+    opacity: 0;
+    z-index: 60;
     justify-content: center;
     align-items: center;
-    background-color: rgba(black, .5);
+    background-color: rgba(black, .7);
 
     .close{
         position: absolute;
@@ -131,5 +133,11 @@
 
 
 .join-show{
-    display: none;
+    opacity: 1;
+    top:0;
+}
+
+.join-show-none{
+    opacity: 0;
+    z-index: -99;
 }

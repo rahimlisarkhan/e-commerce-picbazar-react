@@ -3,10 +3,9 @@ import * as aiIcon from 'react-icons/ai';
 import { RiLockPasswordLine } from 'react-icons/ri';
 
 let JoinPopup = () => {
-    const [JoinOpen, setJoinPopup] = useState(false)
+   
     const [viewPassword,setPasswordView ] = useState(false)
     return (
-        <div className={!JoinOpen ? 'popup-join' : ' join-show'}>
 
         <div className="form-content">
             <div className="form-desc">
@@ -36,8 +35,6 @@ let JoinPopup = () => {
             AiOutlineEyeInvisible */}
         </div>
 
-            <button className='close' onClick={()=> setJoinPopup(!JoinOpen)}  > <aiIcon.AiOutlineClose/></button>
-        </div>
     );
 }
 

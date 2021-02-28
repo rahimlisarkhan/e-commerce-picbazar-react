@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ProductCarousel from './ProductCarousel';
 import ProductContent from './ProductContent';
+import {connect} from 'react-redux';
+import { compose } from 'redux';
+import {getProducts,getCategories,getProductCategories} from '../../redux/actions/productPageActions'
 
-let ProductPageContainer = () => {
+let ProductPageContainer = (props) => {
     
-    
+  
+    useEffect(() => {props.getProducts()
+                     props.getCategories()  }, [])
     return (
         <>
           <ProductCarousel/>
-         <ProductContent/>
+         <ProductContent productPage={props.productPage}
+                         getProductCategories={(id)=>props.getProductCategories(id)}   
+                         getProduct = {() => props.getProduct()}  
+                           />
         </>
     );
 }
 
 
-export default ProductPageContainer;
+let mapStateToProps = (state) => ({productPage:state.productPage})
+
+export default compose(connect(mapStateToProps,{getProducts,getCategories,getProductCategories}))( ProductPageContainer)

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "../img/logo.svg";
 import JoinPopup from "./Auth/JoinPopup";
+import * as aiIcon from 'react-icons/ai';
 import SignUpPopup from "./Auth/SignUpPopup";
 
 const Header = () => {
@@ -61,16 +62,28 @@ const Header = () => {
         </button>
         
         {/* register */}
-        {SignUpOpen && <SignUpPopup/>}
+        <div className={!SignUpOpen ? 'popup-join' : 'popup-join join-show'}>
+          <SignUpPopup/>
+          <button className='close' onClick={()=> setSignUpPopup(!SignUpOpen)}  > 
+          <aiIcon.AiOutlineClose/></button>
+        </div>
+
         <button className="join" onClick={() => setSignUpPopup(!SignUpOpen)}>
           Sign up
         </button>
 
+
         {/* join popup */}
-        {JoinOpen && <JoinPopup />}
+        <div className={!JoinOpen ? 'popup-join' : 'popup-join join-show'}>
+        <JoinPopup />
+        <button className='close' onClick={()=> setJoinPopup(!JoinOpen)}  > 
+        <aiIcon.AiOutlineClose/></button>
+        </div>
+
         <button className="join" onClick={() => setJoinPopup(!JoinOpen)}>
           Join
         </button>
+      
       </div>
     </nav>
   );
