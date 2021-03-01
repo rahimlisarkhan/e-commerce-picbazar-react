@@ -540,6 +540,57 @@
     z-index: 100 !important;
 }
 
+
+//Profile user
+.profile__content{
+    width: 5%;
+    padding: .2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: $color-green;
+    position: relative;
+
+    .profile-show{
+        top: 130% !important;
+    }
+    &:hover{
+        transform: scale(1.03);
+    }
+
+    img{
+        width: 100%;
+        border-radius: 50%;
+        height: auto;
+    }
+
+    .profile__content__dropMenu{
+        position: absolute;
+        top:-600%;
+        right: 2%;
+        width: 18rem;
+        background-color: white;
+        height: 25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: $color-dark;
+
+        span{
+            width: 90%;
+            text-align: center;
+            padding: 2rem;
+
+            &:hover{
+                background-color: whitesmoke;
+            }
+        }
+    }
+}
+
+
 //Animation
 @keyframes imageAnime {
     0%{left:0; top:0; opacity:1; width: 40%; }

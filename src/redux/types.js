@@ -1,3 +1,6 @@
 //PRODUCT PAGE TYPES
- export const GET_PRODUCTS = 'GET_PRODUCTS'
- export const GET_CATEGORIES = 'GET_CATEGORIES'
+export const GET_PRODUCTS = 'GET_PRODUCTS'
+export const GET_CATEGORIES = 'GET_CATEGORIES'
+
+//AUTH
+export const IS_AUTH = 'IS_AUTH'

@@ -3,11 +3,20 @@ import logo from "../img/logo.svg";
 import JoinPopup from "./Auth/JoinPopup";
 import * as aiIcon from 'react-icons/ai';
 import SignUpPopup from "./Auth/SignUpPopup";
+import profileImage from '../img/profile.jpeg';
+import {getRegisterAuth} from '../redux/actions/authActions'
+import { connect } from "react-redux";
+import { compose } from "redux";
 
-const Header = () => {
+
+const Header = (props) => {
+  
+  //Hooks
   const [langOpen, setLangDrop] = useState(false);
   const [JoinOpen, setJoinPopup] = useState(false);
   const [SignUpOpen, setSignUpPopup] = useState(false);
+  const [openProfile,setProfileMenu] = useState(false);
+
 
   return (
     <nav className="navbar ">
@@ -63,7 +72,7 @@ const Header = () => {
         
         {/* register */}
         <div className={!SignUpOpen ? 'popup-join' : 'popup-join join-show'}>
-          <SignUpPopup/>
+          <SignUpPopup getRegisterAuth={(data) => props.getRegisterAuth(data)} />
           <button className='close' onClick={()=> setSignUpPopup(!SignUpOpen)}  > 
           <aiIcon.AiOutlineClose/></button>
         </div>
@@ -71,6 +80,8 @@ const Header = () => {
         <button className="join" onClick={() => setSignUpPopup(!SignUpOpen)}>
           Sign up
         </button>
+
+
 
 
         {/* join popup */}
@@ -83,10 +94,25 @@ const Header = () => {
         <button className="join" onClick={() => setJoinPopup(!JoinOpen)}>
           Join
         </button>
-      
+
+        <div className='profile__content' onClick={() => setProfileMenu(!openProfile)}>
+          <img src={profileImage} alt="user" />
+
+
+          <div className={openProfile ? "profile__content__dropMenu profile-show" : "profile__content__dropMenu"}>
+              <span>Own order</span>
+              <span>Your order</span>
+              <span>Log out</span>
+          </div>
+        </div>
+
+
       </div>
     </nav>
   );
 };
 
-export default Header;
+
+let mapStateToProps = (state) => ({auth:state})
+
+export default compose(connect(mapStateToProps,{getRegisterAuth}))( Header);

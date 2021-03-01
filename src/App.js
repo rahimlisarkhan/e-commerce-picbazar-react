@@ -1,4 +1,4 @@
-import Header from './components/Header';
+import Header from './components/HeaderContainer';
 import ProductPageContainer from './components/ProductPage/ProductPageContainer';
 import './sass/App.scss';
 
