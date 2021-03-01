@@ -4,3 +4,7 @@ export const GET_CATEGORIES = 'GET_CATEGORIES'
 
 //AUTH
 export const IS_AUTH = 'IS_AUTH'
+export const GET_LOGIN_PAGE = 'GET_LOGIN_PAGE'
+
+//PROFILE
+export const GET_USER_INFO = 'GET_USER_INFO'

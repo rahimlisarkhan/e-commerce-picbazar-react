@@ -1,6 +1,8 @@
 .navbar{
     display: flex;
-    padding: 2.5rem;
+    height: 8rem;
+    padding: 1rem;
+    align-items: center;
     flex-direction: row !important;
     position: relative;
     z-index: 4;
@@ -24,6 +26,7 @@
 
     &__land-join{
         width: 50%;
+        height: 70%;
         justify-content: flex-end;
         display: flex;
 
@@ -32,7 +35,7 @@
             position: absolute;
             top: -500%;
             opacity: 0  ;
-            right: 5%;
+            right: 11%;
             background-color: rgb(255, 255, 255);
             width: 10%;
             height: 25rem;
@@ -69,7 +72,7 @@
             align-items: center;
             outline: none !important;
             border: none !important;
-            font-size: 1.6rem !important;
+            font-size: 1.8rem !important;
             
 
             img{
@@ -132,6 +135,8 @@
 }
 
 
+
+
 .join-show{
     opacity: 1;
     top:0;
@@ -140,4 +145,68 @@
 .join-show-none{
     opacity: 0;
     z-index: -99;
+}
+
+
+
+
+//Profile
+.profile__content{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 2rem ;
+    padding: .2rem;
+    cursor: pointer;
+    position: relative;
+
+    .profile-show{
+        top:8.4%;
+    }
+ 
+
+    img{
+        width: 20%;
+        border-radius: 50%;
+        height: auto;
+
+        &:hover{
+            transform: scale(1.03);
+        }
+    }
+
+    h2{
+        width: 70%;
+        font-size: 1.7rem;
+    }
+   
+}
+
+
+
+.profile__content__dropMenu{
+    position: fixed;
+    top:-50%;
+    right:1%;
+    width: 18rem;
+    background-color: white;
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: $color-dark;
+
+    span{
+        width: 90%;
+        text-align: center;
+        padding: 2rem;
+
+        &:hover{
+            background-color: whitesmoke;
+        }
+    }
 }

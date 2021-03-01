@@ -3,8 +3,7 @@ import logo from "../img/logo.svg";
 import JoinPopup from "./Auth/JoinPopup";
 import * as aiIcon from 'react-icons/ai';
 import SignUpPopup from "./Auth/SignUpPopup";
-import profileImage from '../img/profile.jpeg';
-import {getRegisterAuth} from '../redux/actions/authActions'
+import {getRegisterAuth,getLoginAuth} from '../redux/actions/authActions'
 import { connect } from "react-redux";
 import { compose } from "redux";
 
@@ -17,6 +16,9 @@ const Header = (props) => {
   const [SignUpOpen, setSignUpPopup] = useState(false);
   const [openProfile,setProfileMenu] = useState(false);
 
+  console.log('====================================');
+  console.log(props);
+  console.log('====================================');
 
   return (
     <nav className="navbar ">
@@ -77,27 +79,25 @@ const Header = (props) => {
           <aiIcon.AiOutlineClose/></button>
         </div>
 
-        <button className="join" onClick={() => setSignUpPopup(!SignUpOpen)}>
+        {!props.auth && <button className="join" onClick={() => setSignUpPopup(!SignUpOpen)}>
           Sign up
-        </button>
-
-
+        </button>}
 
 
         {/* join popup */}
-        <div className={!JoinOpen ? 'popup-join' : 'popup-join join-show'}>
-        <JoinPopup />
-        <button className='close' onClick={()=> setJoinPopup(!JoinOpen)}  > 
-        <aiIcon.AiOutlineClose/></button>
+        <div className={JoinOpen ? 'popup-join' : 'popup-join join-show'}>
+          <JoinPopup getLoginAuth ={(data)=> props.getLoginAuth(data)}/>
+          <button className='close' onClick={()=> setJoinPopup(!JoinOpen)}  > 
+          <aiIcon.AiOutlineClose/></button>
         </div>
 
-        <button className="join" onClick={() => setJoinPopup(!JoinOpen)}>
+        {!props.auth && <button className="join" onClick={() => setJoinPopup(!JoinOpen)}>
           Join
-        </button>
+        </button>}
 
-        <div className='profile__content' onClick={() => setProfileMenu(!openProfile)}>
-          <img src={profileImage} alt="user" />
-
+        {props.auth && <div className='profile__content' onClick={() => setProfileMenu(!openProfile)}>
+          {/* <img src={props.user.image} alt="user" />
+          <h2>{props.user.first_name} {props.user.last_name}</h2> */}
 
           <div className={openProfile ? "profile__content__dropMenu profile-show" : "profile__content__dropMenu"}>
               <span>Own order</span>
@@ -105,7 +105,7 @@ const Header = (props) => {
               <span>Log out</span>
           </div>
         </div>
-
+}
 
       </div>
     </nav>
@@ -113,6 +113,11 @@ const Header = (props) => {
 };
 
 
-let mapStateToProps = (state) => ({auth:state})
+let mapStateToProps = (state) => ({
+  state:state,
+  openLoginPage:state.authentication.openLoginPage,
+  user:state.userInfo.user,
+  auth:state.authentication.auth
+})
 
-export default compose(connect(mapStateToProps,{getRegisterAuth}))( Header);
+export default compose(connect(mapStateToProps,{getRegisterAuth,getLoginAuth}))( Header);

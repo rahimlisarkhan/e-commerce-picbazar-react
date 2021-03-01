@@ -7,7 +7,7 @@ import { toast } from "react-toastify"
 //GET REQUEST FOR PRODUCTS
 export const getProducts = () => dispatch => {
 
-    baseURL.get('/products/')
+    baseURL.get('/api/products/')
            .then(res =>dispatch({type:type.GET_PRODUCTS,payload:res.data}))
            .catch(err => toast.error(err))
 }
@@ -15,7 +15,7 @@ export const getProducts = () => dispatch => {
 //GET REQUEST FOR CATEGORIES
 export const getCategories = () => dispatch => {
 
-    baseURL.get('/categories/')
+    baseURL.get('api/categories/')
            .then(res =>dispatch({type:type.GET_CATEGORIES,payload:res.data}))
            .catch(err => toast.error(err))
 }
@@ -24,7 +24,7 @@ export const getCategories = () => dispatch => {
 export const getProductCategories = (id) => dispatch => {
 
  
-    baseURL.get(`/products/?category=${id}`)
+    baseURL.get(`api/products/?category=${id}`)
            .then(res =>dispatch({type:type.GET_PRODUCTS,payload:res.data}))
            .catch(err => toast.error(err))
 }

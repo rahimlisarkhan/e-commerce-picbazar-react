@@ -29,12 +29,13 @@ let ProductContent = (props) => {
               productData={el}
               getProductCategories={props.getProductCategories}
               getProducts={props.getProducts}
+              auth={props.auth}
             />
           ))}
       </div>
 
       {/* basket   */}
-      <div
+    {props.auth && <div
         className="product-content__baskets"
         onClick={() => setBasketList(!basketListShow)}
       >
@@ -45,7 +46,8 @@ let ProductContent = (props) => {
         <div className="basket-price">
           $ <span>0.00</span>
         </div>
-      </div>
+      </div>}
+
 
       {/* user orders basket*/}
       <div
