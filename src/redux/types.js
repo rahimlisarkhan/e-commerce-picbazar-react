@@ -8,3 +8,4 @@ export const GET_LOGIN_PAGE = 'GET_LOGIN_PAGE'
 
 //PROFILE
 export const GET_USER_INFO = 'GET_USER_INFO'
+export const GET_USER_BASKET = 'GET_USER_BASKET'

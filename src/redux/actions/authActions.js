@@ -22,7 +22,7 @@ export const getLoginAuth = data => dispatch => {
                 let userToken =resp.data.token
                 
                 //write axios 
-                baseURL.defaults.headers.common['Authorization'] =`Bearer ${userToken}`;
+                baseURL.defaults.headers.common['Authorization'] =`Token ${userToken}`;
                 
                 //write local
                 localStorage.setItem('token', userToken)
@@ -37,3 +37,7 @@ export const getLoginAuth = data => dispatch => {
             })
             .catch((err) => toast.error(err.message))
 }
+
+
+
+

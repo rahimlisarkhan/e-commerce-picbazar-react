@@ -4,7 +4,6 @@ import * as type from "../types"
 let initialState ={
     products:null,
     categories:null,
-    basket:null
 }
 
 

@@ -16,9 +16,6 @@ const Header = (props) => {
   const [SignUpOpen, setSignUpPopup] = useState(false);
   const [openProfile,setProfileMenu] = useState(false);
 
-  console.log('====================================');
-  console.log(props);
-  console.log('====================================');
 
   return (
     <nav className="navbar ">
