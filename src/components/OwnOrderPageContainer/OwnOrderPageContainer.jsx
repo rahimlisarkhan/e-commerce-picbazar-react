@@ -1,10 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import {getOwnerProduct} from '../../redux/actions/ownerPageAction'
+import {logout} from '../../redux/actions/authActions'
+import OwnOrderPageNavbar from './OwnOrderPageNavbar'
+import OwnOrderPageSection from './OwnOrderPageSection'
 
- let OwnOrderPageContainer = () => {
+
+
+ let OwnOrderPageContainer = (props) => {
+
+    
+    useEffect(() => {
+        props.auth && props.getOwnerProduct()
+    }, [])
+
+
+
     return (
-        <div>
-            Own Page
+        <div className='owner-container' >
+            <OwnOrderPageNavbar logout={()=> props.logout(props.history.push)} />
+            <OwnOrderPageSection ownProduct={props.ownProduct}/>
         </div>
     )
 }
-export default OwnOrderPageContainer
+
+let mapStateToProps = (state)=>({
+    ownProduct:state.userInfo.ownProduct,
+    auth:state.authentication.auth
+})
+
+export default compose(connect(mapStateToProps,{getOwnerProduct,logout}))( OwnOrderPageContainer)

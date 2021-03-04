@@ -3,10 +3,14 @@ import logo from "../img/logo.svg";
 import JoinPopup from "./Auth/JoinPopup";
 import * as aiIcon from "react-icons/ai";
 import SignUpPopup from "./Auth/SignUpPopup";
-import { getRegisterAuth, getLoginAuth } from "../redux/actions/authActions";
+import { getRegisterAuth, getLoginAuth,logout } from "../redux/actions/authActions";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { NavLink } from "react-router-dom";
+import { MdDashboard } from "react-icons/md";
+import {FaCalendarCheck} from 'react-icons/fa'
+import { IoBagCheckSharp } from "react-icons/io5";
+import { RiLogoutBoxRFill } from "react-icons/ri";
 
 const Header = (props) => {
   console.log("====================================");
@@ -28,6 +32,7 @@ const Header = (props) => {
       </div>
 
       <div className="navbar__land-join">
+
         {/* lang dropdown */}
         <div className={langOpen ? "dropdown-lang openshow" : "dropdown-lang"}>
           <span>
@@ -132,7 +137,7 @@ const Header = (props) => {
 
 
         {/* Profile menu */}
-        {props.user && (
+        {(props.user && props.auth) && (
           <div
             className="profile__content"
             onClick={() => setProfileMenu(!openProfile)}
@@ -150,16 +155,16 @@ const Header = (props) => {
               }
             >
               <NavLink to="/picbazar/" exact className="dropLink">
-                Home
+              <MdDashboard/> Dashboard
               </NavLink>
               <NavLink to="/picbazar/owner-order" className="dropLink">
-                Own order
+               <FaCalendarCheck/> Own order
               </NavLink>
               <NavLink to="/picbazar/your-order" className="dropLink">
-                Your order
+                <IoBagCheckSharp/> Your order
               </NavLink>
-              <NavLink to="/picbazar/owner-order" className="dropLink">
-                Log out
+              <NavLink to="/picbazar/" className="dropLink" onClick={()=>props.logout(props.history.push) } >
+                <RiLogoutBoxRFill/> Log out
               </NavLink>
             </div>
           </div>
@@ -177,5 +182,5 @@ let mapStateToProps = (state) => ({
 });
 
 export default compose(
-  connect(mapStateToProps, { getRegisterAuth, getLoginAuth })
+  connect(mapStateToProps, { getRegisterAuth, getLoginAuth,logout })
 )(Header);

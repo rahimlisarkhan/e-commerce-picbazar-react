@@ -27,7 +27,7 @@ export const getProducts = (n=1) => dispatch => {
 //GET REQUEST FOR CATEGORIES
 export const getCategories = () => dispatch => {
 
-    baseURL.get('api/categories/')
+    baseURL.get('/api/categories/')
            .then(res =>dispatch({type:type.GET_CATEGORIES,payload:res.data}))
            .catch(err => toast.error(err))
 }

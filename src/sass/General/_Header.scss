@@ -15,7 +15,8 @@
         &:hover{
             background-color: transparent;
         }
-        a{
+        a{  
+            margin-left: 2.8rem;
             width: 40% ;
             &:hover{
                 background-color: transparent !important;
@@ -222,10 +223,15 @@
 
     .dropLink{
         width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
         text-align: center;
         padding: 2rem;
         color: $color-dark !important;
-
+        svg{
+            margin-right: .4rem;
+        }
         &:hover{
             background-color: whitesmoke;
         }

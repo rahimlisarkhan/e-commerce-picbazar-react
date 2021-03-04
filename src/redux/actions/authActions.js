@@ -38,4 +38,8 @@ export const getLoginAuth = data => dispatch => {
 
 
 
-
+export const logout = (callback) => dispatch =>{
+    window.localStorage.clear()
+    dispatch({type:type.IS_AUTH, payload:null})
+    callback('/picbazar/')
+}

@@ -9,10 +9,10 @@ let ProductContent = (props) => {
   const [basketListShow, setBasketList] = useState(false);
   const [pageCountNext, setPageCount] = useState(1);
 
-  let limitClick = Math.round(props.productPage.productsLength / 3);
+  // let limitClick = Math.round(props.productPage.productsLength / 3);
 
-  console.log(limitClick);
-  console.log(pageCountNext);
+  let limitClick = props.productPage.productsLength ;
+
   return (
     <div className="product-content">
       {/* product lists */}
