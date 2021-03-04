@@ -1,0 +1,31 @@
+.product-add-panel{
+position: fixed;
+top: 0;
+right: -80%;
+width: 75%;
+z-index: 9;
+font-size: 5rem;
+height: 100%;
+background-color: rgb(247,247,247);
+box-shadow: none;
+}
+
+
+.panel-show{
+    right: 0;
+    box-shadow: -50rem .1rem 4rem rgba(0, 0, 0, 0.267);
+}
+
+.closePanel{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 2%;
+    left: -2.9%;
+    width: 2.5%;
+    height: auto;
+    background-color: rgb(247,247,247);
+    border-radius: 50%;
+    padding: .8rem;
+}

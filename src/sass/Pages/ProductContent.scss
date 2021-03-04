@@ -159,6 +159,11 @@
             background-color: $color-green;
             color: white;
         }
+
+        &:disabled{
+            background-color: rgb(160, 235, 197);
+            color: white;
+        }
     }
 
     &__baskets{
@@ -539,7 +544,11 @@
     z-index: 100 !important;
 }
 
+//disable btn
 
+.disableBtn{
+    background-color: red !important;
+}
 
 
 //Animation

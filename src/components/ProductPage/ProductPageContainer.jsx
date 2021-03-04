@@ -10,20 +10,23 @@ import {
   basketProductAdd,
   basketProductRemove,
   getUserBasket,
+  getUser,
   checkToken
 } from "../../redux/actions/productPageActions";
 import { ToastContainer } from "react-toastify";
 
 
 let ProductPageContainer = (props) => {
-  console.log(props);
 
+  console.log(props);
   useEffect(() => {
-    props.getProducts();
+    props.location.pathname === '/picbazar' && props.getProducts();
     props.getCategories();
-    props.checkToken(props.auth)
+    props.auth && props.checkToken(props.auth);
+    props.auth && props.getUser();
+    props.auth && props.getUserBasket();
   }, []);
-  // props.checkTokeN(props.auth)
+
   return (
     <>
       <ProductCarousel />
@@ -31,6 +34,7 @@ let ProductPageContainer = (props) => {
         productPage={props.productPage}
         getProductCategories={(id) => props.getProductCategories(id)}
         getProduct={() => props.getProduct()}
+        loadMore = {(n) => props.getProducts(n)}
         auth={props.auth}
         userBasket={props.userBasket}
         basketProductAdd={(productID, productCount) =>
@@ -56,6 +60,7 @@ export default compose(
   connect(mapStateToProps, {
     getProducts,
     getCategories,
+    getUser,
     getProductCategories,
     basketProductAdd,
     basketProductRemove,

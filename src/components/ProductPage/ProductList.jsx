@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoBasketSharp } from "react-icons/io5";
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -6,10 +6,26 @@ import { Carousel } from "react-responsive-carousel";
 
 let ProductList = (props) => {
   const [countShow, setCountShow] = useState(false);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(null);
   const [productPopupOpen, setPopup] = useState(false);
+  // let productID = props.productData.id
 
 
+  useEffect(() => {
+      
+      // if (props.userBasket ){
+      //    let productarr = props.userBasket.find((el) => el.product.id === productID);
+      //    setCount(productarr === undefined ? 0 : productarr.product.id)
+      //     console.log('kopyaladgn id' + productID);
+      // }
+    
+    console.log(props.basketData);
+
+  }, [props.basketData]);
+
+
+
+ 
   return (
     <>
       {/* Poduct Card */}
@@ -28,43 +44,48 @@ let ProductList = (props) => {
         <span>
           {props.productData.amount_by_unit} {props.productData.unit}
         </span>
-        
-        {props.auth && <div className="basket">
-          <span>$ {props.productData.price}</span>
 
-          {!countShow || count === 0 ? (
-            <span
-              className="cart"
-              onClick={() => {
-                setCountShow(!countShow)
-                setCount(1)
-              }}
-            >
-              <IoBasketSharp />
-              Cart
-            </span>
-          ) : (
-            <span className="cart bg-green">
-              <AiOutlineMinus
-                onClick={() =>{
-                  setCount((prevCount) => (prevCount <= 0 ? 0 : prevCount - 1))
-                          // count === 0 ? props.basketProductRemove(props.productData.id)
-                          props.basketProductAdd(props.productData.id,count-1)
-                          props.getUserBasket()
-                        }} 
-                          
-              />
-              {count}
-              <AiOutlinePlus
-                onClick={() => {setCount((nextCount) => nextCount + 1)
-                                props.basketProductAdd(props.productData.id,count+1)
-                                props.getUserBasket() }} />
-            </span>
-          )}
-        </div>
-        }
+        {props.auth && (
+          <div className="basket">
+            <span>$ {props.productData.price}</span>
+
+            {!countShow || count === 0 ? (
+              <span
+                className="cart"
+                onClick={() => {
+                  setCountShow(!countShow);
+                  // setCount(1);
+                }}
+              >
+                <IoBasketSharp />
+                Cart
+              </span>
+            ) : (
+              <span className="cart bg-green">
+                <AiOutlineMinus
+                  onClick={() => {
+                    setCount((prevCount) =>
+                      prevCount <= 0 ? 0 : prevCount - 1
+                    );
+                    // count === 0 ? props.basketProductRemove(props.productData.id)
+                    props.basketProductAdd(props.productData.id, count - 1);
+                    props.getUserBasket();
+                  }}
+                />
+
+                {count}
+                <AiOutlinePlus
+                  onClick={() => {
+                    setCount((nextCount) => nextCount + 1);
+                    props.basketProductAdd(props.productData.id, count + 1);
+                    props.getUserBasket();
+                  }}
+                />
+              </span>
+            )}
+          </div>
+        )}
       </div>
-
 
       {/* Product Popup */}
       <div
@@ -108,27 +129,29 @@ let ProductList = (props) => {
               <button onClick={() => props.getProducts()}> All food</button>
             </div>
 
-            {props.auth && <div className="product-info__add">
+            {props.auth && (
+              <div className="product-info__add">
                 <span>$ {props.productData.price}</span>
                 <span>
                   <AiOutlineMinus
-                    onClick={() =>{
+                    onClick={() => {
                       setCount((prevCount) =>
                         prevCount <= 0 ? 0 : prevCount - 1
-                      )
-                      props.basketProductAdd(props.productData.id,count-1)
-                    }
-                  
-                  }
+                      );
+                      props.basketProductAdd(props.productData.id, count - 1);
+                    }}
                   />
                   {count}
                   <AiOutlinePlus
-                    onClick={() => {setCount((nextCount) => nextCount + 1)
-                                   props.basketProductAdd(props.productData.id,count+1)}}
+                    onClick={() => {
+                      setCount((nextCount) => nextCount + 1);
+                      props.basketProductAdd(props.productData.id, count + 1);
+                    }}
                   />
                 </span>
-              </div>}
-            </div>
+              </div>
+            )}
+          </div>
 
           <button
             className="popup-close"

@@ -15,7 +15,6 @@ export const getRegisterAuth = data => dispatch => {
 
 export const getLoginAuth = data => dispatch => {
 
-    console.log(data);
 
     baseURL.post('/accounts/api/login/',data)
            .then((resp) =>{ console.log(resp)  
@@ -29,7 +28,6 @@ export const getLoginAuth = data => dispatch => {
                 
                 //write redux
                 dispatch({type:type.IS_AUTH, payload:userToken})
-                dispatch({type:type.GET_USER_INFO, payload:resp.data})
                 dispatch({type:type.GET_LOGIN_PAGE, payload:false})
 
                 //message
