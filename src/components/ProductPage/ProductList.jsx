@@ -3,8 +3,11 @@ import { IoBasketSharp } from "react-icons/io5";
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import { RiDeleteBin2Line } from "react-icons/ri";
 
 let ProductList = (props) => {
+  
+  console.log(props);
   const [countShow, setCountShow] = useState(false);
   const [count, setCount] = useState(null);
   const [productPopupOpen, setPopup] = useState(false);
@@ -45,6 +48,12 @@ let ProductList = (props) => {
           {props.productData.amount_by_unit} {props.productData.unit}
         </span>
 
+        {/* delete btn owner */}
+        {props.location==='/picbazar/owner-order' &&  
+        <button className='owner-del-btn'> <RiDeleteBin2Line/> delete  </button>}
+       
+
+        {/* userbasket */}
         {props.auth && (
           <div className="basket">
             <span>$ {props.productData.price}</span>
@@ -86,6 +95,8 @@ let ProductList = (props) => {
           </div>
         )}
       </div>
+
+
 
       {/* Product Popup */}
       <div

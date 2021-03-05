@@ -10,7 +10,8 @@ import OwnOrderPageSection from './OwnOrderPageSection'
 
  let OwnOrderPageContainer = (props) => {
 
-    
+    console.log(props);
+
     useEffect(() => {
         props.auth && props.getOwnerProduct()
     }, [])
@@ -20,7 +21,9 @@ import OwnOrderPageSection from './OwnOrderPageSection'
     return (
         <div className='owner-container' >
             <OwnOrderPageNavbar logout={()=> props.logout(props.history.push)} />
-            <OwnOrderPageSection ownProduct={props.ownProduct}/>
+            <OwnOrderPageSection ownProduct={props.ownProduct}
+                                 location={props.location.pathname}
+            />
         </div>
     )
 }

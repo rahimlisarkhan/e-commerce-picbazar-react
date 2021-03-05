@@ -11,6 +11,7 @@ import { MdDashboard } from "react-icons/md";
 import {FaCalendarCheck} from 'react-icons/fa'
 import { IoBagCheckSharp } from "react-icons/io5";
 import { RiLogoutBoxRFill } from "react-icons/ri";
+import FormAddProduct from "./OwnOrderPageContainer/FormAddProduct";
 
 const Header = (props) => {
   console.log("====================================");
@@ -78,6 +79,7 @@ const Header = (props) => {
           </button>
         )}
 
+
         {/* owner product add */}
         {props.location.pathname === "/picbazar/owner-order" && (
           <>
@@ -89,8 +91,7 @@ const Header = (props) => {
                   : "product-add-panel"
               }
             >
-              Form Add Product
-
+              <FormAddProduct/>
               <button className='closePanel'
                       onClick={() => setAddPanel(!productAddOpen)} >  <aiIcon.AiOutlineClose /></button>
             </div>
@@ -120,6 +121,7 @@ const Header = (props) => {
             Sign up
           </button>
         )}
+
 
         {/* join popup */}
         <div className={JoinOpen ? "popup-join join-show" : "popup-join "}>

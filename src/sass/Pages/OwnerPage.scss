@@ -77,9 +77,219 @@ box-shadow: none;
     }
 }
 
+       
+.owner-del-btn{
+    font-size: 1.8rem;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: transparent;
+    color: rgb(190, 72, 72);
+    border: transparent;
+    svg{
+        margin-right: .3rem;
+    }
+}
+
+
 
 .activeNav{
     color: $color-green !important;
     border-radius: 3rem 0 0 3rem ;
     background-color: rgb(247,247,247) !important;
+}
+
+
+//OWNER PRDOUCT CREATE
+.form-owner-add-product{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(247,247,247);
+    justify-content: flex-start;
+    display: flex;
+    text-transform: none !important;
+    flex-direction: column;
+    h1{
+        font-size: 2rem;
+        font-weight: bold;
+        padding: 2rem;
+    }
+    //upload images
+    .uploadsize{
+        width: 100%;
+        text-transform: none;
+        display: flex;
+        padding: 2rem;
+        margin:4rem 0 6rem 0;
+        justify-content: space-between;
+        height:25% !important;
+        
+        h3{
+            padding: 2rem;
+            width: 30%;
+            color: $color-text-dark;
+            font-size: 1.7rem;
+        }
+
+        &__img{
+            padding: 3rem;
+            background-color: rgb(255, 255, 255);
+            width: 60%;
+            
+            .form-product__content__group{
+                height: 88%;
+                border:.1rem dashed $color-text-dark ;
+                border-spacing: 1rem;
+                display: flex;
+                justify-content: center;
+
+                label{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    font-size: 2rem;
+                    padding: 2rem;
+                    color: $color-dark;
+                    cursor: pointer;
+
+                    &:hover svg {
+                        color: $color-green;
+                    }
+                    svg{
+                        color: $color-text-dark;
+                        font-size: 5rem;
+                        margin-bottom: 1rem;
+
+                       
+                    }
+                    span{
+                        font-weight: bold;
+                        color: $color-green;
+                    }
+                    input{
+                        display: none;
+                    }
+                }
+            }
+
+        }
+    }
+
+    //form text
+    .form-product-text{
+        display: flex;
+        justify-content: space-between;
+        height: 48%;
+    
+        padding: 2rem;
+
+    
+        h3{
+            width: 40%;
+            font-size: 1.7rem;
+            padding: 2rem;
+            line-height: 1.4;
+            color: $color-text-dark;
+        }
+
+        &__content{
+            width: 60%;
+            height: 100%;
+            padding: 2rem;
+            overflow: auto;
+            background-color: rgb(255, 255, 255);
+
+            &__group{
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 2rem;
+                position: relative;
+
+                .input-h{
+                    height: 15rem !important;
+                }
+                label{
+                    display: flex;
+                    align-items: center;
+                    font-size: 2rem;
+                    font-weight: bold;
+                    margin-bottom: 1.5rem;
+                    
+                    svg{
+                        cursor: pointer;
+                        font-size: 2.1rem;
+                        margin-left: 1rem;
+                        color: $color-green;
+
+                        &:hover{
+                            transform: scale(1.2);
+                        }
+                    }
+                }
+                p{
+                    position: absolute;
+                    right: 0;
+                    bottom: -26%;
+                    text-transform: lowercase;
+                    color: red;
+                    font-size: 1.6rem;
+                }
+
+                input,
+                select{
+                    border: none;
+                    background-color: rgb(236, 236, 236);
+                    height: 4rem;
+                    padding:1rem !important;
+                    font-size: 1.8rem;
+                }
+
+                input{
+                    &:focus{
+                        border-color:$color-green !important;
+                        outline-color:$color-green  !important;
+                    }
+                }
+                
+
+            }
+        }
+    }
+
+
+    .form-btn-group{
+        margin-top: 2rem;
+        height: 30%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        border-top: .1rem solid rgba(128, 128, 128, 0.233);
+
+        button{
+            width: 48%;
+            height: 45%;
+            display: flex;
+            justify-content: space-evenly;
+            font-size: 1.8rem;
+            color: red;
+            background-color: transparent;
+            letter-spacing: .1rem;
+            align-items: center;
+            &:hover{
+                background-color: gainsboro;
+            }
+
+            &:last-child{
+                background-color: $color-green;
+                color: white;
+                font-weight: bold;
+
+                &:hover{
+                    background-color: rgb(41, 165, 107);
+                }
+            }
+        }
+    }
+
 }

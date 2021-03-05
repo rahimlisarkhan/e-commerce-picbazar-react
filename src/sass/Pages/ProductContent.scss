@@ -398,134 +398,7 @@
         }
     }
 
-    .product-popup-content{
-        position: fixed;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        opacity: 0;
-        height: 100%;
-        z-index: -9;
-        background-color: rgba(0, 0, 0, 0.404);
-
-        &__card{
-            width: 57%;
-            height: 75%;
-            position: relative;
-            background-color: white;
-            box-shadow: 0 .1rem 2rem rgba(0, 0, 0, 0.103);
-            display: flex;
-            padding: 2rem;
-            align-items: flex-start;
-            justify-content: space-between;
-
-            .product-slider{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width:50%;
-                height: 100%;
-              img{
-                  border: none;
-                  width: 100%;
-                  height: auto;
-                  
-                
-              }
-            }
-            .product-info{
-                width: 50%;
-                height: 100%;
-                padding: 3rem;
-
-                h1{
-                    font-size: 3rem;
-                    margin-bottom: 1rem;
-                    font-weight: bold;
-                    text-transform: lowercase;
-                }
-
-                span{
-                    font-size: 1.6rem;
-                    color: $color-text-dark;
-                }
-
-                p{
-                    margin: 2rem 0;
-                    font-size: 1.6rem;
-                    line-height: 1.6;
-                    color: $color-dark;
-                }
-
-                &__category{
-                    width: 90%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-evenly;
-                    padding: 1rem;
-                    button{
-                        width: 45%;
-                        border: none;
-                        padding: .4rem 1rem;
-                        font-size: 1.4rem;
-                        font-weight: bold;
-                        color: $color-dark;
-                        cursor: pointer;
-                        border-radius: 1rem;
-                        background-color: rgb(245, 245, 245);
-                        &:hover{
-                            background-color:$color-green ;
-                            color: white;
-                        }
-
-                    }
-                }
-
-                &__add{
-                    display: flex;
-                    margin-top: 6rem;
-                    align-items: center;
-                    justify-content: space-between;
-
-                    span{
-                        &:first-child{
-                            color: $color-green;
-                            font-size: 2.5rem;
-                            font-weight: bold;
-                        }
-                        &:last-child{
-                            width: 25%;
-                            border-radius: 2rem;
-                            display: flex;
-                            justify-content: space-evenly;
-                            align-items: center;
-                            color: white;
-                            font-size: 1.8rem;
-                            cursor: pointer;
-                            padding: 1rem 1.4rem;
-                            background-color:$color-green;
-                        }
-                    }
-                }
-            }
-            
-            .popup-close{
-                position: absolute;
-                top: 2%;
-                right: 1%;
-                cursor: pointer;
-                outline: none;
-                font-size: 2.5rem;
-                background-color: transparent;
-                border:none;
-                color: $color-text-dark;
-            }
-        }
-    }
+    
 }
 
 
@@ -545,11 +418,145 @@
     z-index: 100 !important;
 }
 
+//show
+.product-popup-content{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    opacity: 0;
+    height: 100%;
+    z-index: -9;
+    background-color: rgba(0, 0, 0, 0.404);
+
+    &__card{
+        width: 57%;
+        height: 75%;
+        position: relative;
+        background-color: white;
+        box-shadow: 0 .1rem 2rem rgba(0, 0, 0, 0.103);
+        display: flex;
+        padding: 2rem;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        .product-slider{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width:50%;
+            height: 100%;
+          img{
+              border: none;
+              width: 100%;
+              height: auto;
+              
+            
+          }
+        }
+        .product-info{
+            width: 50%;
+            height: 100%;
+            padding: 3rem;
+
+            h1{
+                font-size: 3rem;
+                margin-bottom: 1rem;
+                font-weight: bold;
+                text-transform: lowercase;
+            }
+
+            span{
+                font-size: 1.6rem;
+                color: $color-text-dark;
+            }
+
+            p{
+                margin: 2rem 0;
+                font-size: 1.6rem;
+                line-height: 1.6;
+                color: $color-dark;
+            }
+
+            &__category{
+                width: 90%;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                padding: 1rem;
+                button{
+                    width: 45%;
+                    border: none;
+                    padding: .4rem 1rem;
+                    font-size: 1.4rem;
+                    font-weight: bold;
+                    color: $color-dark;
+                    cursor: pointer;
+                    border-radius: 1rem;
+                    background-color: rgb(245, 245, 245);
+                    &:hover{
+                        background-color:$color-green ;
+                        color: white;
+                    }
+
+                }
+            }
+
+            &__add{
+                display: flex;
+                margin-top: 6rem;
+                align-items: center;
+                justify-content: space-between;
+
+                span{
+                    &:first-child{
+                        color: $color-green;
+                        font-size: 2.5rem;
+                        font-weight: bold;
+                    }
+                    &:last-child{
+                        width: 25%;
+                        border-radius: 2rem;
+                        display: flex;
+                        justify-content: space-evenly;
+                        align-items: center;
+                        color: white;
+                        font-size: 1.8rem;
+                        cursor: pointer;
+                        padding: 1rem 1.4rem;
+                        background-color:$color-green;
+                    }
+                }
+            }
+        }
+        
+        .popup-close{
+            position: absolute;
+            top: 2%;
+            right: 1%;
+            cursor: pointer;
+            outline: none;
+            font-size: 2.5rem;
+            background-color: transparent;
+            border:none;
+            color: $color-text-dark;
+        }
+    }
+}
+
+
 //disable btn
 
 .disableBtn{
     background-color: red !important;
 }
+
+
+
 
 
 //Animation

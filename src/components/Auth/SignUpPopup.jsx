@@ -117,7 +117,6 @@ return (
                       type="file"
                       name="image"
                       id="image"
-                      placeholder="image"
                       onChange={(e) =>formik.setFieldValue("image", e.target.files[0])}/>
                     <RiFolderUploadFill /> <span>Upload profile image </span>
                   </label>

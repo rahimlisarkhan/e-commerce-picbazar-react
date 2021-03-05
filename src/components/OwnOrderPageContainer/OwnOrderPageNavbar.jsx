@@ -7,7 +7,6 @@ import { RiLogoutBoxRFill } from 'react-icons/ri'
 
  let OwnOrderPageNavbar = (props) => {
 
-    console.log(props);
     return (
         <div className='owner-container__navbar' >
             <div className="owner-container__navbar__fixed">
