@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import {getOwnerProduct} from '../../redux/actions/ownerPageAction'
+import {getOwnerProduct,productRemove} from '../../redux/actions/ownerPageAction'
 import {logout} from '../../redux/actions/authActions'
 import OwnOrderPageNavbar from './OwnOrderPageNavbar'
 import OwnOrderPageSection from './OwnOrderPageSection'
@@ -10,10 +10,11 @@ import OwnOrderPageSection from './OwnOrderPageSection'
 
  let OwnOrderPageContainer = (props) => {
 
-    console.log(props);
 
     useEffect(() => {
         props.auth && props.getOwnerProduct()
+        props.panelOpenClose && props.getOwnerProduct()
+
     }, [])
 
 
@@ -23,14 +24,23 @@ import OwnOrderPageSection from './OwnOrderPageSection'
             <OwnOrderPageNavbar logout={()=> props.logout(props.history.push)} />
             <OwnOrderPageSection ownProduct={props.ownProduct}
                                  location={props.location.pathname}
-            />
+                                 categories={props.categories}
+                                 productRemove={(id) => props.productRemove(id)}
+                                 getOwnerProduct={()=> props.getOwnerProduct()}
+                               />
         </div>
     )
 }
 
 let mapStateToProps = (state)=>({
     ownProduct:state.userInfo.ownProduct,
-    auth:state.authentication.auth
+    auth:state.authentication.auth,
+    panelOpenClose:state.productPage.panelOpenClose
+
 })
 
-export default compose(connect(mapStateToProps,{getOwnerProduct,logout}))( OwnOrderPageContainer)
+export default compose(connect(mapStateToProps,
+                              {getOwnerProduct,
+                               productRemove,
+                               logout}))
+                               ( OwnOrderPageContainer)

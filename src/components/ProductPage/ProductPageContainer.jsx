@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import ProductCarousel from "./ProductCarousel";
 import ProductContent from "./ProductContent";
+import "react-toastify/dist/ReactToastify.css";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import {
@@ -11,8 +12,8 @@ import {
   basketProductRemove,
   getUserBasket,
   getUser,
-  checkToken
 } from "../../redux/actions/productPageActions";
+import { checkToken } from "../../redux/actions/authActions";
 import { ToastContainer } from "react-toastify";
 
 
@@ -25,7 +26,7 @@ let ProductPageContainer = (props) => {
     props.auth && props.checkToken(props.auth);
     props.auth && props.getUser();
     props.auth && props.getUserBasket();
-  }, []);
+  },[]);
 
   return (
     <>
@@ -36,6 +37,7 @@ let ProductPageContainer = (props) => {
         getProduct={() => props.getProduct()}
         loadMore = {(n) => props.getProducts(n)}
         auth={props.auth}
+        getProducts={()=>props.getProducts()}
         userBasket={props.userBasket}
         basketProductAdd={(productID, productCount) =>
           props.basketProductAdd(productID, productCount)
@@ -45,7 +47,11 @@ let ProductPageContainer = (props) => {
         }
         getUserBasket={() => props.getUserBasket()}
       />
-      <ToastContainer />
+        <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              className='f-size'
+      />
     </>
   );
 };

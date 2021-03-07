@@ -1,28 +1,41 @@
-import React, { useState } from "react";
-import logo from "../img/logo.svg";
-import JoinPopup from "./Auth/JoinPopup";
-import * as aiIcon from "react-icons/ai";
-import SignUpPopup from "./Auth/SignUpPopup";
-import { getRegisterAuth, getLoginAuth,logout } from "../redux/actions/authActions";
-import { connect } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { compose } from "redux";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import logo from "../img/logo.svg";
+
+//COMPONENTS
+import JoinPopup from "./Auth/JoinPopup";
+import SignUpPopup from "./Auth/SignUpPopup";
+import FormAddProduct from "./OwnOrderPage/FormAddProduct";
+
+//ACTIONS
+import {createCategories, getCategories, createAddProduct} from '../redux/actions/productPageActions';
+import { getRegisterAuth, getLoginAuth,logout } from "../redux/actions/authActions";
+import { getOwnerProduct } from "../redux/actions/ownerPageAction";
+
+//ICONS
 import { MdDashboard } from "react-icons/md";
-import {FaCalendarCheck} from 'react-icons/fa'
+import * as aiIcon from "react-icons/ai";
+import {FaCalendarCheck, FaUserAlt} from 'react-icons/fa';
 import { IoBagCheckSharp } from "react-icons/io5";
 import { RiLogoutBoxRFill } from "react-icons/ri";
-import FormAddProduct from "./OwnOrderPageContainer/FormAddProduct";
 
-const Header = (props) => {
-  console.log("====================================");
+
+const HeaderContainer = (props) => {
+
+  useEffect(() => {
+    props.panelOpenClose && props.getCategories();
+  },[]);
+
   console.log(props);
-  console.log("====================================");
+
   //Hooks
-  const [langOpen, setLangDrop] = useState(false);
-  const [JoinOpen, setJoinPopup] = useState(false);
-  const [productAddOpen, setAddPanel] = useState(false);
-  const [SignUpOpen, setSignUpPopup] = useState(false);
-  const [openProfile, setProfileMenu] = useState(false);
+  const [langOpen, setLangDrop] = useState(false),
+        [JoinOpen, setJoinPopup] = useState(false),
+        [productAddOpen, setAddPanel] = useState(false),
+        [SignUpOpen, setSignUpPopup] = useState(false),
+        [openProfile, setProfileMenu] = useState(false);
 
   return (
     <nav className="navbar ">
@@ -86,12 +99,19 @@ const Header = (props) => {
             
             <div
               className={
-                productAddOpen
+                productAddOpen || props.panelOpenClose
                   ? "product-add-panel panel-show"
                   : "product-add-panel"
               }
             >
-              <FormAddProduct/>
+              <FormAddProduct categories={props.categories}
+                              createCategories={(data)=>props.createCategories(data)}
+                              setAddPanel={() => setAddPanel(!productAddOpen)}
+                              panelOpenClose={props.panelOpenClose}
+                              getCategories={() => props.getCategories()}
+                              createAddProduct={(data) => props.createAddProduct(data)}
+                              getOwnerProduct={() => props.getOwnerProduct()}
+                />
               <button className='closePanel'
                       onClick={() => setAddPanel(!productAddOpen)} >  <aiIcon.AiOutlineClose /></button>
             </div>
@@ -157,10 +177,13 @@ const Header = (props) => {
               }
             >
               <NavLink to="/picbazar/" exact className="dropLink">
-              <MdDashboard/> Dashboard
+                <MdDashboard/> Dashboard
+              </NavLink>
+              <NavLink to="/picbazar/profile"  className="dropLink">
+                 <FaUserAlt/> Profile
               </NavLink>
               <NavLink to="/picbazar/owner-order" className="dropLink">
-               <FaCalendarCheck/> Own order
+                <FaCalendarCheck/> Own products
               </NavLink>
               <NavLink to="/picbazar/your-order" className="dropLink">
                 <IoBagCheckSharp/> Your order
@@ -180,9 +203,17 @@ let mapStateToProps = (state) => ({
   openLoginPage: state.authentication.openLoginPage,
   user: state.userInfo.user,
   auth: state.authentication.auth,
-  state: state,
+  categories:state.productPage.categories,
+  panelOpenClose:state.productPage.panelOpenClose
 });
 
 export default compose(
-  connect(mapStateToProps, { getRegisterAuth, getLoginAuth,logout })
-)(Header);
+  connect(mapStateToProps,{ getRegisterAuth,
+                            getCategories, 
+                            getLoginAuth,
+                            logout,
+                            getOwnerProduct,
+                            createCategories,
+                            createAddProduct
+                          })
+                          )(HeaderContainer);

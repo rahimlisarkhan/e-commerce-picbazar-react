@@ -208,16 +208,16 @@
 
 .profile__content__dropMenu{
     position: fixed;
-    top:-50%;
-    right:1%;
-    width: 18rem;
+    top:-48%;
+    right:.5%;
+    width: 19rem;
     background-color: white;
-    height: 25rem;
+    height: 30rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
     color: $color-dark;
 
@@ -227,7 +227,7 @@
         align-items: center;
         justify-content: flex-start;
         text-align: center;
-        padding: 2rem;
+        padding:1.7rem 1rem;
         color: $color-dark !important;
         svg{
             margin-right: .4rem;

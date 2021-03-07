@@ -16,12 +16,17 @@ export const getUser = () => dispatch => {
 //GET REQUEST FOR PRODUCTS
 export const getProducts = (n=1) => dispatch => {
 
-    baseURL.get(`/api/products/?page=${n}&page_size=3`)
+    dispatch({type:type.IS_LOADING,payload:true})
+    dispatch({type:type.GET_PRODUCTS,payload:[]})
+    
+    baseURL.get(`/api/products/?page=${n}&page_size=3&ordering=-created_at`)
            .then(res =>{
                     dispatch({type:type.GET_PRODUCTS,payload:res.data.products})
-                    dispatch({type:type.GET_PRODUCTS_LENGTH,payload:res.data.count})        
+                    dispatch({type:type.GET_PRODUCTS_LENGTH,payload:res.data.count})
+                    dispatch({type:type.IS_LOADING,payload:false})        
                 })
            .catch(err => toast.error(err))
+           .finally(()=> dispatch({type:type.IS_LOADING,payload:false}) ) 
 }
 
 //GET REQUEST FOR CATEGORIES
@@ -46,11 +51,16 @@ export const getUserBasket = () => dispatch => {
 ////GET REQUEST FOR PRODUCT CATEGORIES
 export const getProductCategories = (id) => dispatch => {
 
- 
+    dispatch({type:type.IS_LOADING,payload:true})
+    dispatch({type:type.GET_PRODUCTS,payload:[]})
+    
     baseURL.get(`api/products/?category=${id}`)
-           .then(res =>dispatch({type:type.GET_PRODUCTS,payload:res.data}))
+           .then(res =>{dispatch({type:type.GET_PRODUCTS_CATEGORIES,payload:res.data.products})
+                        dispatch({type:type.IS_LOADING,payload:false})    
+        })
            .catch(err => toast.error(err))
-}
+           .finally(()=> dispatch({type:type.IS_LOADING,payload:false}))
+}       
 
 
 
@@ -64,8 +74,9 @@ export const basketProductAdd = (productID,productCount) => dispatch => {
     .then(res => console.log(res))
 }
 
-//POST BASKET PRODUCT REMOVE
+//BASKET PRODUCT REMOVE
 export const basketProductRemove = (productID) => dispatch => {
+    
     // let data={
     //     product:productID,
     //     count:productCount
@@ -74,15 +85,32 @@ export const basketProductRemove = (productID) => dispatch => {
         baseURL.delete(`/api/basket/${productID}/`)
         .then(res => console.log(res))
 
+}
+
+
+//GET REQUEST FOR PRODUCT CATEGORIES
+export const createCategories = (data) => dispatch => {
+
+    baseURL.post(`/api/categories/`,data)
+            .then(res => {toast.success('Category created');
+                          dispatch({type:type.PANEL_OPEN_CLOSE,payload:true})})
+            .catch(err => toast.error(err))
+            .finally(() =>  dispatch({type:type.PANEL_OPEN_CLOSE,payload:false}) )
+}
+
+//GET REQUEST FOR PRODUCT CATEGORIES
+export const createAddProduct = (data) => dispatch => {
+    
+    console.log(data);
+
+    baseURL.post(`/api/products/`,data)
+            .then(res => {toast.success('Product created');
+                          dispatch({type:type.PANEL_OPEN_CLOSE,payload:true})})
+            .catch(err => toast.error(err))
+            .finally(() =>  dispatch({type:type.PANEL_OPEN_CLOSE,payload:false}) )
+
 
 }
 
 
-//Check token
-export const checkToken = token => dispatch => {
 
-    baseURL.defaults.headers.common['Authorization'] =`Token ${token}`;
-    dispatch({type:type.IS_AUTH, payload:token})
-
-    
-} 

@@ -4,11 +4,13 @@ import ProductList from "./ProductList";
 import { IoBagCheck } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import ProductBasketLists from "./ProductBasketLists";
+import LoadingCard from "../../common/LoadingCard";
 
 let ProductContent = (props) => {
   const [basketListShow, setBasketList] = useState(false);
   const [pageCountNext, setPageCount] = useState(1);
 
+  console.log(props.productPage.isLoading)
   // let limitClick = Math.round(props.productPage.productsLength / 3);
 
   let limitClick = props.productPage.productsLength ;
@@ -20,6 +22,7 @@ let ProductContent = (props) => {
         <div className="product-content__category__list">
           <ProductCategory
             categories={props.productPage.categories}
+            getProducts={props.getProducts}
             getProductCategories={props.getProductCategories}
           />
         </div>
@@ -27,22 +30,35 @@ let ProductContent = (props) => {
 
       {/* product categories */}
       <div className="product-content__products">
-        {props.productPage.products &&
-          props.productPage.products.map((el) => (
-            <ProductList
-              key={el.id}
-              productData={el}
-              getProductCategories={props.getProductCategories}
-              basketProductAdd={props.basketProductAdd}
-              basketProductRemove={props.basketProductRemove}
-              getProducts={props.getProducts}
-              userBasket={props.userBasket}
-              getUserBasket={props.getUserBasket}
-              auth={props.auth}
-            />
-          ))}
+  
+          
+          {props.productPage.isLoading 
+            ? <>
+              <LoadingCard/>
+              <LoadingCard/>
+              <LoadingCard/>
+              <LoadingCard/>
+              <LoadingCard/>
+             </>
+
+            : props.productPage.products &&
+               props.productPage.products.map((el) => (
+                <ProductList
+                  key={el.id}
+                  productData={el}
+                  getProductCategories={props.getProductCategories}
+                  basketProductAdd={props.basketProductAdd}
+                  basketProductRemove={props.basketProductRemove}
+                  getProducts={props.getProducts}
+                  userBasket={props.userBasket}
+                  getUserBasket={props.getUserBasket}
+                  auth={props.auth}
+                />
+              ))
+          }
+         
       </div>
-      {/* {props.userBasket.length} */}
+
       {/* basket   */}
       {props.auth && (
         <div

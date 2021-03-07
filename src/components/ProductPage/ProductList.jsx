@@ -7,12 +7,9 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 
 let ProductList = (props) => {
   
-  console.log(props);
   const [countShow, setCountShow] = useState(false);
   const [count, setCount] = useState(null);
   const [productPopupOpen, setPopup] = useState(false);
-  // let productID = props.productData.id
-
 
   useEffect(() => {
       
@@ -22,7 +19,6 @@ let ProductList = (props) => {
       //     console.log('kopyaladgn id' + productID);
       // }
     
-    console.log(props.basketData);
 
   }, [props.basketData]);
 
@@ -50,7 +46,11 @@ let ProductList = (props) => {
 
         {/* delete btn owner */}
         {props.location==='/picbazar/owner-order' &&  
-        <button className='owner-del-btn'> <RiDeleteBin2Line/> delete  </button>}
+        <button className='owner-del-btn'
+                onClick={()=>{ props.productRemove(props.productData.id)
+                               props.getOwnerProduct()
+                }}
+        > <RiDeleteBin2Line/>  </button>}
        
 
         {/* userbasket */}
@@ -129,7 +129,7 @@ let ProductList = (props) => {
 
             <p>{props.productData.description}</p>
 
-            <div className="product-info__category">
+            {props.location !=='/picbazar/owner-order'&& <div className="product-info__category">
               <button
                 onClick={() =>
                   props.getProductCategories(props.productData.category.id)
@@ -138,7 +138,7 @@ let ProductList = (props) => {
                 {props.productData.category.title}
               </button>
               <button onClick={() => props.getProducts()}> All food</button>
-            </div>
+              </div> }
 
             {props.auth && (
               <div className="product-info__add">

@@ -121,3 +121,129 @@ form{
     height: 63rem !important;
     z-index: 999999;
 }
+
+
+//add categories
+.form-categories-add{
+    position: absolute;
+    bottom: 14% ;
+    left: 3%;
+    width: 34%;
+    opacity: 0;
+    height: 28rem;
+    z-index: -9999;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 .1rem 2rem rgba(0, 0, 0, 0.253);
+}
+.categoryPanelShow{
+    opacity: 1;
+    z-index: 9999;
+}
+
+.form-categories-add-content{
+    width: 100%;
+    padding: 2rem;
+    height: 100%;
+
+
+    h1{
+        font-size: 1.7rem;
+        margin-bottom: 2rem;
+    }
+
+    &__group{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-transform:lowercase;
+        position: relative;
+
+        p{
+            position: absolute;
+            bottom: 0;
+            right: 39%;
+            font-size: 1.4rem;
+            color: rgb(214, 61, 61);
+        }
+
+
+        input{
+            width: 45%;
+            height:3rem;
+            border: none;
+            background-color: rgb(243, 243, 243);
+
+            &:focus{
+                outline-color:$color-green ;
+                border-color:$color-green ;
+                text-transform: capitalize;
+            }
+        }
+
+
+        label{
+            width: 100%;
+            font-size: 2rem;
+            display: flex;
+            margin: 1.4rem 0;
+            align-items: center;
+            
+            p{
+                position: static;
+                font-size: 2rem;
+                color: rgb(97, 97, 97) !important;
+            }
+            input{
+                display: none;
+            }
+            svg{
+                margin-right: 1rem;
+                font-size: 3rem;
+                color: rgb(177, 177, 177);
+            
+            }
+        }
+    }
+
+    &__btn-group{
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-evenly;
+        
+        button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem !important;
+            text-align: center;
+            padding: .7rem 1.6rem;
+            width: 45%;
+            background-color: transparent;
+            color: red;
+            &:hover{
+                background-color: rgb(243, 243, 243);
+            }
+
+            &:last-child{
+                color: white;
+                background-color: $color-green;
+                font-weight: bold;
+
+                &:hover{
+                    background-color: rgb(2, 134, 108);
+                }
+            }
+        }
+    }
+}
+
+.f-size{
+    font-size: 2rem !important;
+    text-transform: lowercase !important;
+    font-weight: bold !important;
+}
+
+
+.iconColor{
+    color: red !important;
+}
