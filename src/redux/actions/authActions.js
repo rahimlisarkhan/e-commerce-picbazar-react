@@ -15,16 +15,15 @@ export const getRegisterAuth = data => dispatch => {
 export const getLoginAuth = data => dispatch => {
     baseURL.post('/accounts/api/login/',data)
            .then((resp) =>{ console.log(resp)  
-                let userToken =resp.data.token
                 
                 //write axios 
-                baseURL.defaults.headers.common['Authorization'] =`Token ${userToken}`;
+                baseURL.defaults.headers.common['Authorization'] =`Token ${resp.data.token}`;
                 
                 //write local
-                localStorage.setItem('token', userToken)
+                localStorage.setItem('token', resp.data.token)
                 
                 //write redux
-                dispatch({type:type.IS_AUTH, payload:userToken})
+                dispatch({type:type.IS_AUTH, payload:resp.data.token})
                 dispatch({type:type.GET_LOGIN_PAGE, payload:false})
 
                 //message

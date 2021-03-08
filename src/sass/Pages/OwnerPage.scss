@@ -68,12 +68,25 @@ box-shadow: none;
     }
 
     &__section{
-        width: 75%;
+        width: 80%;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
         align-self:space-evenly;
-        padding: 7rem;
+        padding:9rem 6rem;
+        margin: 5rem;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0 .1rem .3rem rgba(0, 0, 0, 0.247);
+        position: relative;
+
+        h1{
+            position: absolute;
+            top: 3%;
+            left: 2%;
+            font-weight: bold;
+            letter-spacing: .1rem;
+            font-size: 2rem;
+        }
     }
 }
 

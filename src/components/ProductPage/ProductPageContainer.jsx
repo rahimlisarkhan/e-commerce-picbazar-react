@@ -11,9 +11,9 @@ import {
   basketProductAdd,
   basketProductRemove,
   getUserBasket,
-  getUser,
 } from "../../redux/actions/productPageActions";
 import { checkToken } from "../../redux/actions/authActions";
+import { getUser } from "../../redux/actions/profilePageActions";
 import { ToastContainer } from "react-toastify";
 
 

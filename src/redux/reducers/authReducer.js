@@ -1,4 +1,4 @@
-import { GET_LOGIN_PAGE, IS_AUTH } from "../types";
+import * as type from "../types";
 
 
 let initialState ={ 
@@ -10,10 +10,10 @@ export const authenReduser =(state=initialState,action) => {
 
 switch (action.type){
 
-    case IS_AUTH:
+    case type.IS_AUTH:
         return{...state, auth:action.payload}
     
-    case GET_LOGIN_PAGE:
+    case type.GET_LOGIN_PAGE:
         return{...state, openLoginPage:action.payload}
 
     default:

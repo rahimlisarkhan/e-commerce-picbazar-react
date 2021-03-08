@@ -17,12 +17,14 @@
 @import './General/Navbar';
 
 //Main Page
-@import './Pages/Carousel.scss';
-@import './Pages/ProductContent.scss';
+@import './Pages/Carousel';
+@import './Pages/ProductContent';
 
 //Owner Page
-@import './Pages/OwnerPage.scss';
+@import './Pages/OwnerPage';
 
+//Profile Page
+@import './Pages/ProfilePage';
 
 
 

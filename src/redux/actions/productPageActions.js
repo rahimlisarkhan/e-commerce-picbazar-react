@@ -5,12 +5,6 @@ import { toast } from "react-toastify"
 
 
 
-export const getUser = () => dispatch => {
-
-    baseURL.get('/accounts/api/user-profile/')
-           .then(res =>dispatch({type:type.GET_USER_INFO,payload:res.data}))
-           .catch(err => toast.error(err))
-}
 
 
 //GET REQUEST FOR PRODUCTS

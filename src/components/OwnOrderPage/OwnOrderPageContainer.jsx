@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import {getOwnerProduct,productRemove} from '../../redux/actions/ownerPageAction'
+import {getOwnerProduct,productRemove} from '../../redux/actions/ownerPageActions'
 import {logout} from '../../redux/actions/authActions'
 import OwnOrderPageNavbar from './OwnOrderPageNavbar'
 import OwnOrderPageSection from './OwnOrderPageSection'
+import { ToastContainer } from 'react-toastify'
 
 
 
@@ -28,6 +29,11 @@ import OwnOrderPageSection from './OwnOrderPageSection'
                                  productRemove={(id) => props.productRemove(id)}
                                  getOwnerProduct={()=> props.getOwnerProduct()}
                                />
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              className='f-size'
+      />
         </div>
     )
 }

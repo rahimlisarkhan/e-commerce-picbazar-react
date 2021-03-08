@@ -12,7 +12,7 @@ import FormAddProduct from "./OwnOrderPage/FormAddProduct";
 //ACTIONS
 import {createCategories, getCategories, createAddProduct} from '../redux/actions/productPageActions';
 import { getRegisterAuth, getLoginAuth,logout } from "../redux/actions/authActions";
-import { getOwnerProduct } from "../redux/actions/ownerPageAction";
+import { getOwnerProduct } from "../redux/actions/ownerPageActions";
 
 //ICONS
 import { MdDashboard } from "react-icons/md";
@@ -180,7 +180,7 @@ const HeaderContainer = (props) => {
                 <MdDashboard/> Dashboard
               </NavLink>
               <NavLink to="/picbazar/profile"  className="dropLink">
-                 <FaUserAlt/> Profile
+                 <FaUserAlt/>Your Profile
               </NavLink>
               <NavLink to="/picbazar/owner-order" className="dropLink">
                 <FaCalendarCheck/> Own products

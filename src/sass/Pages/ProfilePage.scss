@@ -1,0 +1,138 @@
+.profile-container__section{
+    margin: 5rem;
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    box-shadow: 0 .1rem .3rem rgba(0, 0, 0, 0.247);
+    position: relative;
+    padding: 4rem;
+
+
+    h1{
+        position: absolute;
+        top: 3%;
+        left: 2%;
+        font-weight: bold;
+        letter-spacing: .1rem;
+        font-size: 2rem;
+    }
+
+
+
+}
+
+
+.profile-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+  
+
+    &__imagegroup{
+        width: 20%;
+        background-color: green;
+        margin-bottom: 2rem;
+        position: relative;
+        
+ 
+        img{
+            width: 100%;
+            box-shadow: 0 .1rem 2rem rgba(0, 0, 0, 0.425);
+            height: auto;
+            
+
+          
+        }
+
+      
+        &:hover label{
+            opacity: 1;
+        }
+        label{
+            
+            display: flex;
+            position: absolute;
+            top: 0;
+            opacity: 0;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: white;
+            font-size: 5rem;
+            background-color: rgba(0, 0, 0, 0.432);
+
+
+            input{
+                display: none;
+            }
+            p{
+                font-size: 2rem;
+            }
+        }
+    }
+
+    &__content{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        &__group{
+            width: 49%;
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            label{
+                font-size: 1.6rem;
+                margin: 1rem 0 .7rem 0;
+                color:$color-green;
+            }
+
+            p{
+                top:17%;
+                right: 0;
+                position: absolute;
+                color: red;
+                font-size: 1.4rem;
+            }
+            input{
+                
+                border: none;
+                padding:1rem;
+                outline-color: $color-green;
+                background-color: rgb(231, 231, 231);
+                box-shadow: 0 .1rem .1rem rgba(0, 0, 0, 0.144);
+                height: 5rem;
+                font-size: 2rem;
+                letter-spacing: .1rem;
+            }
+        }
+      
+    }
+    &__btn-group{
+        width:100%;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 3rem;
+        
+        button{
+            width: 15%;
+            height: 4rem;
+            letter-spacing: .2rem;
+            cursor: pointer;
+            font-size: 2rem;
+            background-color: $color-green;
+            color: white;
+            border: none;
+            outline: none;
+            padding: 1rem, 1.8rem;
+
+            &:hover{
+                background-color: rgb(12, 121, 88);
+            }
+        }
+    }
+   
+}

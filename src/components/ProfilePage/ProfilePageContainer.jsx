@@ -1,19 +1,22 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import {getOwnerProduct,productRemove} from '../../redux/actions/ownerPageAction'
+import {getOwnerProduct,productRemove} from '../../redux/actions/ownerPageActions'
+import {getUser,createUserInfo} from '../../redux/actions/profilePageActions'
 import {logout} from '../../redux/actions/authActions'
 import OwnOrderPageNavbar from '../OwnOrderPage/OwnOrderPageNavbar'
 import ProfilePageSection from './ProfilePageSection'
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from 'react-toastify'
 
 
 
  let ProfilePageContainer = (props) => {
 
+    console.log(props);
 
     useEffect(() => {
-        // props.auth && props.getOwnerProduct()
-        // props.panelOpenClose && props.getOwnerProduct()
+        props.auth && props.getUser()
 
     }, [])
 
@@ -22,12 +25,15 @@ import ProfilePageSection from './ProfilePageSection'
     return (
         <div className='owner-container' >
             <OwnOrderPageNavbar logout={()=> props.logout(props.history.push)} />
-            <ProfilePageSection ownProduct={props.ownProduct}
-                                 location={props.location.pathname}
-                                 categories={props.categories}
-                                 productRemove={(id) => props.productRemove(id)}
-                                 getOwnerProduct={()=> props.getOwnerProduct()}
+            <ProfilePageSection userInfo={props.userInfo}
+                                getUser={() => props.getUser()}
+                                createUserInfo={(data) => props.createUserInfo(data)}
                                />
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              className='f-size'
+      />
         </div>
     )
 }
@@ -42,5 +48,7 @@ let mapStateToProps = (state)=>({
 export default compose(connect(mapStateToProps,
                               {getOwnerProduct,
                                productRemove,
+                               getUser,
+                               createUserInfo,
                                logout}))
                                ( ProfilePageContainer)

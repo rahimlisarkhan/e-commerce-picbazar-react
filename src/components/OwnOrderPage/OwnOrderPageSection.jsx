@@ -10,7 +10,8 @@ let OwnOrderPageSection = (props) => {
   
   return (
     <div className="owner-container__section">
-      {ownProduct &&
+      <h1>Owner product</h1>
+      {ownProduct ?
         ownProduct.map((el) => (
           <ProductList key={el.id} 
                        location={props.location} 
@@ -18,7 +19,7 @@ let OwnOrderPageSection = (props) => {
                       productRemove={props.productRemove}
                       getOwnerProduct={props.getOwnerProduct}
                       />
-        ))}
+        )): <div>melumat yoxdu</div>}
         
     </div>
   );
