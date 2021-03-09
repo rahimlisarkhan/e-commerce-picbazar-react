@@ -61,7 +61,7 @@ let FormAddProduct = (props) => {
           data.append("amount_by_unit", values.amount_by_unit);
           data.append("unit", values.unit);
 
-        //   form.resetForm()
+          form.resetForm()
  
         props.createAddProduct(data)
         props.getOwnerProduct()
@@ -189,7 +189,7 @@ let FormAddProduct = (props) => {
               </div>
 
               <div className="form-btn-group">
-                <button onClick={() => props.setAddPanel()}>Cancel</button>
+                <button type='button' onClick={() => props.setAddPanel()}>Cancel</button>
                 <button disabled={props.panelOpenClose}>Create Product</button>
               </div>
             </div>

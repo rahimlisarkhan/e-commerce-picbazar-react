@@ -27,7 +27,7 @@ let ProductList = (props) => {
  
   return (
     <>
-      {/* Poduct Card */}
+      {/* Product Card */}
       <div className="product-content__products__card">
         <div
           className="overlay-popup"

@@ -40,9 +40,8 @@ return (
               data.append("title", values.title);
               data.append("icon_png", values.icon_png);
 
-        //   form.resetForm()    
+          form.resetForm()    
           props.createCategories(data)
-          props.getCategories()
       }}
       >
 

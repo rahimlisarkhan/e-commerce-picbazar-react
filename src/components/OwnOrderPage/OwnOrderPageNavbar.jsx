@@ -14,13 +14,13 @@ import { RiLogoutBoxRFill } from 'react-icons/ri'
               <MdDashboard/> Dashboard
               </NavLink>
               <NavLink to="/picbazar/profile" activeClassName="activeNav"  className="dropLink">
-                <FaUserAlt/>Your Profile
+                <FaUserAlt/>Profile
               </NavLink>
               <NavLink to="/picbazar/owner-order" className="dropLink" activeClassName="activeNav">
                <FaCalendarCheck/> Owner products
               </NavLink>
               <NavLink to="/picbazar/your-order" activeClassName="activeNav" className="dropLink">
-                <IoBagCheckSharp/> Your order
+                <IoBagCheckSharp/> My order
               </NavLink>
               <NavLink to="/picbazar/" className="dropLink" onClick={()=> props.logout()}>
                 <RiLogoutBoxRFill/> Log out

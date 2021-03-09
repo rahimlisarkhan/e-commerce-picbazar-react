@@ -1,7 +1,8 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import * as Yup from "yup";
+import Loading from '../../common/Loading'
 
 
 //VALIDATE MESSAGES
@@ -17,10 +18,10 @@ const ProfileForm = Yup.object().shape({
 
 
 let ProfilePageSection = (props) => {
-  console.log(props.userInfo);
- 
+
 
   return (
+    props.userInfo ?
     <div className="profile-container__section">
       <h1>Your Profile</h1>
 
@@ -36,9 +37,9 @@ let ProfilePageSection = (props) => {
             data.append("image", values.image);
             data.append("username", values.username);
 
-            // props.createUserInfo(data);
-            console.log(values);
+            props.createUserInfo(data);
             props.getUser()
+            
           }}
         >
           {(formik) => (
@@ -57,9 +58,7 @@ let ProfilePageSection = (props) => {
                       type="file"
                       id="image"
                       name="image"
-                      onChange={(e) =>
-                        formik.setFieldValue("image", e.target.files[0])
-                      }
+                      onChange={(e) =>formik.setFieldValue("image", e.target.files[0])}
                     />
                   </label>
                   <p>
@@ -111,6 +110,7 @@ let ProfilePageSection = (props) => {
         </Formik>
       </div>
     </div>
+    : <Loading/>
   );
 };
 export default ProfilePageSection;

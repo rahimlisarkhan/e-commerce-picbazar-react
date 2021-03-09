@@ -5,6 +5,8 @@ let initialState ={
     user:null,
     userBasket:null,
     ownProduct:null,
+    orderProduct:null,
+    closeProductPanel:false,
 }
 
 export const userInfoReducer = (state=initialState,action) => {
@@ -18,7 +20,19 @@ export const userInfoReducer = (state=initialState,action) => {
             return {...state, userBasket:action.payload}
 
         case type.GET_OWN_PRODUCTS:
-            return {...state,ownProduct:action.payload}
+            return {...state, ownProduct:action.payload}
+
+        case type.ADD_OWN_PRODUCTS:
+            return {...state, ownProduct:[...state.ownProduct, action.payload]}
+
+        case type.ADD_REMOVE_USER_BASKET:
+            return {...state, userBasket:[...state.userBasket, action.payload]}
+
+        case type.GET_ORDER_PRODUCTS:
+            return {...state, orderProduct:action.payload}
+
+        case type.CLOSE_PRODUCT_PANEL:
+            return {...state, closeProductPanel:action.payload}
 
         default:
             return state

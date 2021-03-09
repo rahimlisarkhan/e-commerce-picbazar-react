@@ -65,19 +65,23 @@ export const basketProductAdd = (productID,productCount) => dispatch => {
         count:productCount
     }
     baseURL.post('/api/basket/',data)
-    .then(res => console.log(res))
+    .then(res => {console.log(res)
+                  dispatch({type:type.ADD_REMOVE_USER_BASKET,payload:res.data})
+
+    })
 }
 
 //BASKET PRODUCT REMOVE
 export const basketProductRemove = (productID) => dispatch => {
     
-    // let data={
-    //     product:productID,
-    //     count:productCount
-    // }
+    console.log(productID);
+       
        
         baseURL.delete(`/api/basket/${productID}/`)
-        .then(res => console.log(res))
+        .then(res =>{ console.log(res)
+            dispatch({type:type.CLOSE_PRODUCT_PANEL,payload:true})
+        })
+        .finally(()=>dispatch({type:type.CLOSE_PRODUCT_PANEL,payload:false}))
 
 }
 
@@ -85,26 +89,27 @@ export const basketProductRemove = (productID) => dispatch => {
 //GET REQUEST FOR PRODUCT CATEGORIES
 export const createCategories = (data) => dispatch => {
 
+    dispatch({type:type.PANEL_OPEN_CLOSE,payload:false})
     baseURL.post(`/api/categories/`,data)
             .then(res => {toast.success('Category created');
+                          console.log(res.data);
+                          dispatch({type:type.ADD_CATEGORIES,payload:res.data})
                           dispatch({type:type.PANEL_OPEN_CLOSE,payload:true})})
             .catch(err => toast.error(err))
-            .finally(() =>  dispatch({type:type.PANEL_OPEN_CLOSE,payload:false}) )
 }
 
-//GET REQUEST FOR PRODUCT CATEGORIES
+//POST REQUEST ADD PRODUCT 
 export const createAddProduct = (data) => dispatch => {
     
     console.log(data);
 
+
     baseURL.post(`/api/products/`,data)
-            .then(res => {toast.success('Product created');
+            .then(res => {
+                          console.log(res);
+                          toast.success('Product created');
+                          dispatch({type:type.ADD_OWN_PRODUCTS,payload:res.data})
                           dispatch({type:type.PANEL_OPEN_CLOSE,payload:true})})
             .catch(err => toast.error(err))
-            .finally(() =>  dispatch({type:type.PANEL_OPEN_CLOSE,payload:false}) )
-
-
+            .finally(() =>  dispatch({type:type.PANEL_OPEN_CLOSE,payload:false}))
 }
-
-
-

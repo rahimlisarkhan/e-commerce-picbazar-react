@@ -10,7 +10,6 @@ let ProductContent = (props) => {
   const [basketListShow, setBasketList] = useState(false);
   const [pageCountNext, setPageCount] = useState(1);
 
-  console.log(props.productPage.isLoading)
   // let limitClick = Math.round(props.productPage.productsLength / 3);
 
   let limitClick = props.productPage.productsLength ;
@@ -100,6 +99,7 @@ let ProductContent = (props) => {
                 basketProductAdd={props.basketProductAdd}
                 getUserBasket={props.getUserBasket}
                 key={el.id}
+                closeProductPanel={props.closeProductPanel}
                 basketData={el}
               />
             ))

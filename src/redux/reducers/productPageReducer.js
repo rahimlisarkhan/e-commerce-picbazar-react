@@ -22,6 +22,9 @@ export const productPageReducer = (state=initialState,action) => {
 
         case type.GET_CATEGORIES:
             return {...state, categories:action.payload}
+        
+        case type.ADD_CATEGORIES:
+            return {...state, categories:[...state.categories, action.payload]}
 
         case type.GET_PRODUCTS_LENGTH:
             return{...state, productsLength:action.payload}

@@ -4,14 +4,18 @@ import {AiOutlineMinus,AiOutlinePlus,AiOutlineClose} from 'react-icons/ai'
 
  let ProductBasketLists = (props) => {
 
-    const [count,setCount] = useState(null)
-    const [closeTab,setCloseTab] = useState(false)
+console.log(props.closeProductPanel);
 
-    useEffect(() =>{setCount(props.basketData.count)},[props.basketData])
+    const [count,setCount] = useState(null)
+    const [closePanel, setClosePanel] = useState(props.closeProductPane)
+
+    useEffect(() =>{setCount(props.basketData.count)
+            
+    },[props.basketData])
 
     return (
-        !closeTab && 
-        <div className='product-basket-card'  >
+        !closePanel &&
+        <div className='product-basket-card'>
             
             <div className="card-count">
             <AiOutlineMinus  onClick={() => {setCount(prevCount => prevCount <= 0 ? 0 : prevCount - 1)
@@ -41,9 +45,9 @@ import {AiOutlineMinus,AiOutlinePlus,AiOutlineClose} from 'react-icons/ai'
                 <span>${props.basketData.count * props.basketData.product.price}</span>
             </div>
 
-            <button onClick={()=> {props.basketProductRemove(props.basketData.product.id)
-                                    setCloseTab(!closeTab)
-            }} >
+            <button onClick={()=> {props.basketProductRemove(props.basketData.id)
+                                   props.getUserBasket()
+                                     setClosePanel(true)}}>
                 <AiOutlineClose/> </button>
         </div>
     )

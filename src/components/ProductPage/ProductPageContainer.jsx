@@ -19,8 +19,8 @@ import { ToastContainer } from "react-toastify";
 
 let ProductPageContainer = (props) => {
 
-  console.log(props);
   useEffect(() => {
+
     props.location.pathname === '/picbazar' && props.getProducts();
     props.getCategories();
     props.auth && props.checkToken(props.auth);
@@ -36,6 +36,7 @@ let ProductPageContainer = (props) => {
         getProductCategories={(id) => props.getProductCategories(id)}
         getProduct={() => props.getProduct()}
         loadMore = {(n) => props.getProducts(n)}
+        closeProductPanel={props.closeProductPanel}
         auth={props.auth}
         getProducts={()=>props.getProducts()}
         userBasket={props.userBasket}
@@ -60,6 +61,7 @@ let mapStateToProps = (state) => ({
   productPage: state.productPage,
   userBasket: state.userInfo.userBasket,
   auth: state.authentication.auth,
+  closeProductPanel:state.userInfo.closeProductPanel
 });
 
 export default compose(

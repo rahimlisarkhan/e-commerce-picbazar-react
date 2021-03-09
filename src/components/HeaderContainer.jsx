@@ -33,7 +33,7 @@ const HeaderContainer = (props) => {
   //Hooks
   const [langOpen, setLangDrop] = useState(false),
         [JoinOpen, setJoinPopup] = useState(false),
-        [productAddOpen, setAddPanel] = useState(false),
+        [productAddOpen, setAddPanel] = useState(props.isLoading),
         [SignUpOpen, setSignUpPopup] = useState(false),
         [openProfile, setProfileMenu] = useState(false);
 
@@ -180,13 +180,13 @@ const HeaderContainer = (props) => {
                 <MdDashboard/> Dashboard
               </NavLink>
               <NavLink to="/picbazar/profile"  className="dropLink">
-                 <FaUserAlt/>Your Profile
+                 <FaUserAlt/>Profile
               </NavLink>
               <NavLink to="/picbazar/owner-order" className="dropLink">
                 <FaCalendarCheck/> Own products
               </NavLink>
               <NavLink to="/picbazar/your-order" className="dropLink">
-                <IoBagCheckSharp/> Your order
+                <IoBagCheckSharp/> My order
               </NavLink>
               <NavLink to="/picbazar/" className="dropLink" onClick={()=>props.logout(props.history.push) } >
                 <RiLogoutBoxRFill/> Log out
@@ -204,7 +204,8 @@ let mapStateToProps = (state) => ({
   user: state.userInfo.user,
   auth: state.authentication.auth,
   categories:state.productPage.categories,
-  panelOpenClose:state.productPage.panelOpenClose
+  panelOpenClose:state.productPage.panelOpenClose,
+  isLoading:state.productPage.isLoading
 });
 
 export default compose(

@@ -34,7 +34,7 @@ box-shadow: none;
 //Owner Page
 .owner-container{
     display: flex;
-    height: 100vh;
+    height: auto;
     background-color: rgb(247,247,247);
 
     &__navbar{
@@ -86,6 +86,18 @@ box-shadow: none;
             font-weight: bold;
             letter-spacing: .1rem;
             font-size: 2rem;
+        }
+
+        &__null{
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            display: flex;
+            
+            p{
+                font-size: 2rem;
+                letter-spacing: .2rem;
+            }
         }
     }
 }

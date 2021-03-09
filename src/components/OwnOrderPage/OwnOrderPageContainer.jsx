@@ -6,6 +6,7 @@ import {logout} from '../../redux/actions/authActions'
 import OwnOrderPageNavbar from './OwnOrderPageNavbar'
 import OwnOrderPageSection from './OwnOrderPageSection'
 import { ToastContainer } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -26,6 +27,7 @@ import { ToastContainer } from 'react-toastify'
             <OwnOrderPageSection ownProduct={props.ownProduct}
                                  location={props.location.pathname}
                                  categories={props.categories}
+                                 isLoading={props.isLoading}
                                  productRemove={(id) => props.productRemove(id)}
                                  getOwnerProduct={()=> props.getOwnerProduct()}
                                />
@@ -41,7 +43,8 @@ import { ToastContainer } from 'react-toastify'
 let mapStateToProps = (state)=>({
     ownProduct:state.userInfo.ownProduct,
     auth:state.authentication.auth,
-    panelOpenClose:state.productPage.panelOpenClose
+    panelOpenClose:state.productPage.panelOpenClose,
+    isLoading:state.productPage.isLoading
 
 })
 

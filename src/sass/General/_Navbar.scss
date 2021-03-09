@@ -35,7 +35,6 @@
         font-size: 1.8rem;
         color: rgb(246, 246, 246);
         font-weight: 500;
-        border-bottom:.1rem solid  rgba(245, 222, 179, 0.295);
         @include respond(phone){
             font-size: 1.6rem;
         }

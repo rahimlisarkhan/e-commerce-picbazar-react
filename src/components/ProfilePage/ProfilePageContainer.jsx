@@ -41,7 +41,8 @@ import { ToastContainer } from 'react-toastify'
 let mapStateToProps = (state)=>({
     userInfo:state.userInfo.user,
     auth:state.authentication.auth,
-    panelOpenClose:state.productPage.panelOpenClose
+    panelOpenClose:state.productPage.panelOpenClose,
+  
 
 })
 
