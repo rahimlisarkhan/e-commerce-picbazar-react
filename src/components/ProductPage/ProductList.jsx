@@ -6,25 +6,19 @@ import { Carousel } from "react-responsive-carousel";
 import { RiDeleteBin2Line } from "react-icons/ri";
 
 let ProductList = (props) => {
-  
   const [countShow, setCountShow] = useState(false);
-  const [count, setCount] = useState(null);
+  const [count, setCount] = useState(0);
   const [productPopupOpen, setPopup] = useState(false);
 
   useEffect(() => {
-      
-      // if (props.userBasket ){
-      //    let productarr = props.userBasket.find((el) => el.product.id === productID);
-      //    setCount(productarr === undefined ? 0 : productarr.product.id)
-      //     console.log('kopyaladgn id' + productID);
-      // }
-    
+    var productCount =
+      props.productData &&
+      props.userBasket &&
+      props.userBasket.find((el) => el.product.id === props.productData.id);
 
-  }, [props.basketData]);
+    productCount && setCount(productCount.count);
+  }, [props.userBasket]);
 
-
-
- 
   return (
     <>
       {/* Product Card */}
@@ -45,31 +39,40 @@ let ProductList = (props) => {
         </span>
 
         {/* delete btn owner */}
-        {props.location==='/picbazar/owner-order' &&  
-        <button className='owner-del-btn'
-                onClick={()=>{ props.productRemove(props.productData.id)
-                               props.getOwnerProduct()
-                }}
-        > <RiDeleteBin2Line/>  </button>}
-       
+        {props.location === "/picbazar/owner-order" && (
+          <button
+            className="owner-del-btn"
+            onClick={() => {
+              props.productRemove(props.productData.id);
+              props.getOwnerProduct();
+            }}
+          >
+            {" "}
+            <RiDeleteBin2Line />{" "}
+          </button>
+        )}
 
         {/* userbasket */}
         {props.auth && (
           <div className="basket">
             <span>$ {props.productData.price}</span>
 
-            {!countShow || count === 0 ? (
+            {(countShow || count <= 0) &&
               <span
                 className="cart"
                 onClick={() => {
-                  setCountShow(!countShow);
-                  // setCount(1);
+                  setCountShow(false);
+                  setCount(1);
+                  props.basketProductAdd(props.productData.id, 1);
+                  props.getUserBasket();
                 }}
               >
                 <IoBasketSharp />
                 Cart
               </span>
-            ) : (
+              }
+
+              {count > 0 && 
               <span className="cart bg-green">
                 <AiOutlineMinus
                   onClick={() => {
@@ -90,13 +93,12 @@ let ProductList = (props) => {
                     props.getUserBasket();
                   }}
                 />
-              </span>
-            )}
+              </span>}
+            
+
           </div>
         )}
       </div>
-
-
 
       {/* Product Popup */}
       <div
@@ -129,16 +131,19 @@ let ProductList = (props) => {
 
             <p>{props.productData.description}</p>
 
-            {props.location !=='/picbazar/owner-order'&& <div className="product-info__category">
-              <button
-                onClick={() =>
-                  props.getProductCategories(props.productData.category.id)
-                }
-              >
-                {props.productData.category.title}
-              </button>
-              <button onClick={() => props.getProducts()}> All food</button>
-              </div> }
+            {props.location !== "/picbazar/owner-order" && (
+              <div className="product-info__category">
+                <button
+                  onClick={() =>{
+                    props.getProductCategories(props.productData.category.id)
+                 
+                  }}
+                >
+                  {props.productData.category.title}
+                </button>
+                <button onClick={() => props.getProducts()}> All food</button>
+              </div>
+            )}
 
             {props.auth && (
               <div className="product-info__add">
@@ -150,6 +155,7 @@ let ProductList = (props) => {
                         prevCount <= 0 ? 0 : prevCount - 1
                       );
                       props.basketProductAdd(props.productData.id, count - 1);
+                      props.getUserBasket();
                     }}
                   />
                   {count}
@@ -157,6 +163,7 @@ let ProductList = (props) => {
                     onClick={() => {
                       setCount((nextCount) => nextCount + 1);
                       props.basketProductAdd(props.productData.id, count + 1);
+                      props.getUserBasket();
                     }}
                   />
                 </span>

@@ -10,8 +10,11 @@ let ProductContent = (props) => {
   const [basketListShow, setBasketList] = useState(false);
   const [pageCountNext, setPageCount] = useState(1);
 
+  console.log(props.userBasket);
+  let totalPrice = 0
+  props.userBasket && props.userBasket.map(el=> console.log( totalPrice += el.product.price))
   // let limitClick = Math.round(props.productPage.productsLength / 3);
-
+  
   let limitClick = props.productPage.productsLength ;
 
   return (
@@ -92,7 +95,7 @@ let ProductContent = (props) => {
         </div>
 
         <div className="lists__content">
-          {props.userBasket ? (
+          {(props.userBasket &&  props.userBasket.length !== [] )? (
             props.userBasket.map((el) => (
               <ProductBasketLists
                 basketProductRemove={props.basketProductRemove}

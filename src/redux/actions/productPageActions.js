@@ -13,7 +13,7 @@ export const getProducts = (n=1) => dispatch => {
     dispatch({type:type.IS_LOADING,payload:true})
     dispatch({type:type.GET_PRODUCTS,payload:[]})
     
-    baseURL.get(`/api/products/?page=${n}&page_size=3&ordering=-created_at`)
+    baseURL.get(`/api/products/?page=${n}&page_size=5&ordering=-created_at`)
            .then(res =>{
                     dispatch({type:type.GET_PRODUCTS,payload:res.data.products})
                     dispatch({type:type.GET_PRODUCTS_LENGTH,payload:res.data.count})
@@ -102,7 +102,6 @@ export const createCategories = (data) => dispatch => {
 export const createAddProduct = (data) => dispatch => {
     
     console.log(data);
-
 
     baseURL.post(`/api/products/`,data)
             .then(res => {

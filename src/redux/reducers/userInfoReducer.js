@@ -4,6 +4,7 @@ import * as type from "../types"
 let initialState ={
     user:null,
     userBasket:null,
+    userProductCount:[],
     ownProduct:null,
     orderProduct:null,
     closeProductPanel:false,
@@ -26,7 +27,7 @@ export const userInfoReducer = (state=initialState,action) => {
             return {...state, ownProduct:[...state.ownProduct, action.payload]}
 
         case type.ADD_REMOVE_USER_BASKET:
-            return {...state, userBasket:[...state.userBasket, action.payload]}
+            return {...state, userProductCount:new Set([...state.userProductCount, action.payload])}
 
         case type.GET_ORDER_PRODUCTS:
             return {...state, orderProduct:action.payload}

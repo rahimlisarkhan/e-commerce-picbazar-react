@@ -32,14 +32,14 @@ let ProductPageContainer = (props) => {
     <>
       <ProductCarousel />
       <ProductContent
-        productPage={props.productPage}
-        getProductCategories={(id) => props.getProductCategories(id)}
-        getProduct={() => props.getProduct()}
-        loadMore = {(n) => props.getProducts(n)}
-        closeProductPanel={props.closeProductPanel}
         auth={props.auth}
-        getProducts={()=>props.getProducts()}
         userBasket={props.userBasket}
+        productPage={props.productPage}
+        closeProductPanel={props.closeProductPanel}
+        userProductCount={props.userProductCount}
+        getProductCategories={(id) => props.getProductCategories(id)}
+        loadMore = {(n) => props.getProducts(n)}
+        getProducts={()=>props.getProducts()}
         basketProductAdd={(productID, productCount) =>
           props.basketProductAdd(productID, productCount)
         }
@@ -60,6 +60,7 @@ let ProductPageContainer = (props) => {
 let mapStateToProps = (state) => ({
   productPage: state.productPage,
   userBasket: state.userInfo.userBasket,
+  userProductCount:state.userInfo.userProductCount,
   auth: state.authentication.auth,
   closeProductPanel:state.userInfo.closeProductPanel
 });
