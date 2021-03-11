@@ -24,18 +24,25 @@ import { RiLogoutBoxRFill } from "react-icons/ri";
 
 const HeaderContainer = (props) => {
 
+
   useEffect(() => {
+    
     props.panelOpenClose && props.getCategories();
-  },[]);
-
+    setJoinPopup(props.openLoginPage)
+    
+  },[props.openLoginPage]);
+  
   console.log(props);
-
+  
   //Hooks
   const [langOpen, setLangDrop] = useState(false),
         [JoinOpen, setJoinPopup] = useState(false),
         [productAddOpen, setAddPanel] = useState(props.isLoading),
         [SignUpOpen, setSignUpPopup] = useState(false),
         [openProfile, setProfileMenu] = useState(false);
+
+
+  console.log(JoinOpen);
 
   return (
     <nav className="navbar ">

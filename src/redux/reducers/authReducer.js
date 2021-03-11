@@ -3,7 +3,7 @@ import * as type from "../types";
 
 let initialState ={ 
     auth: localStorage.getItem('token'),
-    openLoginPage:false
+    openLoginPage:null,
 }
 
 export const authenReduser =(state=initialState,action) => {

@@ -49,7 +49,7 @@ import {AiOutlineMinus,AiOutlinePlus,AiOutlineClose} from 'react-icons/ai'
 
             <button onClick={()=> {props.basketProductRemove(props.basketData.id)
                                    props.getUserBasket()
-                                     setClosePanel(!closePanel)}}>
+                                   setClosePanel(!closePanel)}}>
                 <AiOutlineClose/> </button>
         </div>
     )

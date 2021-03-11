@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import {getYourProduct} from '../../redux/actions/orderPageAction'
+import {getYourProduct,orderRemove} from '../../redux/actions/orderPageAction'
 import {logout} from '../../redux/actions/authActions'
 import OwnOrderPageNavbar from '../OwnOrderPage/OwnOrderPageNavbar'
 import YourOrderPageSection from './YourOrderPageSection'
@@ -19,6 +19,9 @@ import YourOrderPageSection from './YourOrderPageSection'
         <div className='owner-container' >
         <OwnOrderPageNavbar logout={()=> props.logout(props.history.push)} />
         <YourOrderPageSection orderProduct={props.orderProduct}
+                              location={props.location.pathname}
+                              orderRemove={(id) => props.orderRemove(id)}
+                              getYourProduct={()=> props.getYourProduct() }
                            />
     </div>
     )
@@ -34,6 +37,7 @@ let mapStateToProps = (state)=>({
 
 export default compose(connect(mapStateToProps,
   {getYourProduct,
+    orderRemove,
    logout}))
    ( YourOrderPageContainer)
 

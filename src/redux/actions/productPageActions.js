@@ -10,6 +10,8 @@ import { toast } from "react-toastify"
 //GET REQUEST FOR PRODUCTS
 export const getProducts = (n=1) => dispatch => {
 
+    console.log(n);
+
     dispatch({type:type.IS_LOADING,payload:true})
     dispatch({type:type.GET_PRODUCTS,payload:[]})
     
@@ -22,6 +24,26 @@ export const getProducts = (n=1) => dispatch => {
            .catch(err => toast.error(err))
            .finally(()=> dispatch({type:type.IS_LOADING,payload:false}) ) 
 }
+
+//GET REQUEST FOR PRODUCTS
+export const getAllProducts = (n=1) => dispatch => {
+
+    dispatch({type:type.IS_LOADING,payload:true})
+    dispatch({type:type.GET_PRODUCTS,payload:[]})
+    
+    baseURL.get(`/api/products/?page=${n}&page_size=5&ordering=-created_at`)
+           .then(res =>{
+                    dispatch({type:type.GET_PRODUCTS_ALL,payload:res.data.products})
+                    dispatch({type:type.GET_PRODUCTS_LENGTH,payload:res.data.count})
+                    dispatch({type:type.IS_LOADING,payload:false})        
+                })
+           .catch(err => toast.error(err))
+           .finally(()=> dispatch({type:type.IS_LOADING,payload:false}) ) 
+}
+
+
+
+
 
 //GET REQUEST FOR CATEGORIES
 export const getCategories = () => dispatch => {

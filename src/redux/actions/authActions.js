@@ -13,6 +13,7 @@ export const getRegisterAuth = data => dispatch => {
 
 
 export const getLoginAuth = data => dispatch => {
+    dispatch({type:type.GET_LOGIN_PAGE, payload:null})
     baseURL.post('/accounts/api/login/',data)
            .then((resp) =>{ console.log(resp)  
                 
@@ -38,6 +39,7 @@ export const logout = (callback) => dispatch =>{
     window.localStorage.clear()
     dispatch({type:type.IS_AUTH, payload:null})
     callback('/picbazar/')
+    toast.warning('Logged out')
 }
 
 

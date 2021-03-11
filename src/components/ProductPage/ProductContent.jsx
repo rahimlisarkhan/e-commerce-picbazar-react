@@ -20,8 +20,7 @@ let ProductContent = (props) => {
         (el) =>
           (totalPrice += parseInt(el.count) * parseFloat(el.product.price))
       );
-
-    setTotalPrice(totalPrice < 0 ? 0 : totalPrice);
+    setTotalPrice(totalPrice < 0 ? 0.00 : totalPrice);
   }, [props.userBasket]);
 
   // let limitClick = Math.round(props.productPage.productsLength / 3);
@@ -80,7 +79,7 @@ let ProductContent = (props) => {
             <span>{props.userBasket && props.userBasket.length} item</span>
           </div>
           <div className="basket-price">
-            $ <span>{totalPrice}</span>
+            $ <span>{totalPrice.toFixed(2)}</span>
           </div>
         </div>
       )}
@@ -258,14 +257,13 @@ let ProductContent = (props) => {
         </div>
 
         <div className="lists__checkout" onClick={()=> { 
-          props.userBasket.map((el) => {
+              props.userBasket.map(el => {
                   props.orderCheckout(el.product.id,el.count)
                   props.basketProductRemove(el.id)
-                  props.getUserBasket()
-        })
-        }}>
+                  props.getUserBasket()})
+                }}>
           <h2 >Checkout</h2>
-          <span>$ {totalPrice} </span>
+          <span>$ {totalPrice.toFixed(2)} </span>
         </div>
       </div>
       <button

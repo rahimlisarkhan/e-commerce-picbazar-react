@@ -26,10 +26,22 @@ export const orderCheckout = (productID,productCount) => dispatch => {
     console.log(data);
     // dispatch({type:type.IS_LOADING,payload:true})
     baseURL.post('/api/orders/',data)
-            .then(resp =>console.log(resp))
-            // .then((resp) => {dispatch({type:type.GET_ORDER_PRODUCTS,payload:resp.data})
-            //                  dispatch({type:type.IS_LOADING,payload:false})})
-            // .catch((err) => toast.error(err.message))
-            // .finally(()=>dispatch({type:type.IS_LOADING,payload:false}))
+            .then((resp) => {dispatch({type:type.GET_ORDER_PRODUCTS,payload:resp.data})
+                             dispatch({type:type.IS_LOADING,payload:false})})
+            .catch((err) => toast.error(err.message))
+            .finally(()=>dispatch({type:type.IS_LOADING,payload:false}))
 }
+
+//BASKET PRODUCT REMOVE
+export const orderRemove = (productID) => dispatch => {
+
+  
+    dispatch({type:type.ADD_LOADING,payload:false})
+        baseURL.delete(`/api/orders/${productID}/`)
+        .then(res =>{ console.log(res)
+            dispatch({type:type.ADD_LOADING,payload:true})
+        })
+
+}
+
 

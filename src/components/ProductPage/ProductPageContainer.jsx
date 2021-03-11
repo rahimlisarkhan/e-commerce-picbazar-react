@@ -10,6 +10,7 @@ import {
   getProductCategories,
   basketProductAdd,
   basketProductRemove,
+  getAllProducts,
   getUserBasket,
 } from "../../redux/actions/productPageActions";
 import {orderCheckout} from '../../redux/actions/orderPageAction'
@@ -41,7 +42,7 @@ let ProductPageContainer = (props) => {
         userProductCount={props.userProductCount}
         getProductCategories={(id) => props.getProductCategories(id)}
         loadMore = {(n) => props.getProducts(n)}
-        getProducts={()=>props.getProducts()}
+        getProducts={()=>props.getAllProducts()}
         orderCheckout={(productID, productCount) =>
           props.orderCheckout(productID, productCount)
         }
@@ -81,6 +82,7 @@ export default compose(
     basketProductRemove,
     getUserBasket,
     checkToken,
+    getAllProducts,
     orderCheckout,
   })
 )(ProductPageContainer);

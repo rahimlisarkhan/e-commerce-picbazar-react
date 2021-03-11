@@ -184,7 +184,7 @@
     position: relative;
 
     .profile-show{
-        top:8.4%;
+        bottom:200%;
     }
  
 
@@ -208,8 +208,8 @@
 
 
 .profile__content__dropMenu{
-    position: fixed;
-    top:-48%;
+    position: absolute;
+    bottom:-775%;
     right:.5%;
     width: 19rem;
     background-color: white;

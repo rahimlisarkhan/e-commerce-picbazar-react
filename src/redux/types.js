@@ -1,3 +1,7 @@
+//AUTH
+export const IS_AUTH = 'IS_AUTH'
+export const GET_LOGIN_PAGE = 'GET_LOGIN_PAGE'
+
 //PRODUCT PAGE TYPES
 export const GET_PRODUCTS = 'GET_PRODUCTS'
 export const GET_CATEGORIES = 'GET_CATEGORIES'
@@ -7,10 +11,7 @@ export const PANEL_OPEN_CLOSE = 'PANEL_OPEN_CLOSE'
 export const GET_PRODUCTS_CATEGORIES = 'GET_PRODUCTS_CATEGORIES'
 export const IS_LOADING = 'IS_LOADING'
 export const ADD_LOADING ='ADD_LOADING'
-
-//AUTH
-export const IS_AUTH = 'IS_AUTH'
-export const GET_LOGIN_PAGE = 'GET_LOGIN_PAGE'
+export const GET_PRODUCTS_ALL ='GET_PRODUCTS_ALL'
 
 //PROFILE
 export const GET_USER_INFO = 'GET_USER_INFO'

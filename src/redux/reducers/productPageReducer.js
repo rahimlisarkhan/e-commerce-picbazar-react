@@ -18,6 +18,9 @@ export const productPageReducer = (state=initialState,action) => {
         case type.GET_PRODUCTS:
             return {...state, products:[...new Set([...state.products, ...action.payload])]}
 
+        case type.GET_PRODUCTS_ALL:
+            return {...state, products:action.payload}
+
         case type.GET_PRODUCTS_CATEGORIES:
             return{...state, products:action.payload}
 
