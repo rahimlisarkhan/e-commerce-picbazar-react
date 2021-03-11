@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductCategory from "./ProductCategory";
 import ProductList from "./ProductList";
 import { IoBagCheck } from "react-icons/io5";
@@ -9,12 +9,24 @@ import LoadingCard from "../../common/LoadingCard";
 let ProductContent = (props) => {
   const [basketListShow, setBasketList] = useState(false);
   const [pageCountNext, setPageCount] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(0);
 
-  let totalPrice = 0
-  props.userBasket && props.userBasket.map(el=> console.log( totalPrice += el.product.price))
+  console.log(props.userBasket);
+
+  useEffect(() => {
+    let totalPrice = 0;
+    props.userBasket &&
+    props.userBasket.map(
+        (el) =>
+          (totalPrice += parseInt(el.count) * parseFloat(el.product.price))
+      );
+
+    setTotalPrice(totalPrice < 0 ? 0 : totalPrice);
+  }, [props.userBasket]);
+
   // let limitClick = Math.round(props.productPage.productsLength / 3);
-  
-  let limitClick = props.productPage.productsLength ;
+
+  let limitClick = props.productPage.productsLength;
 
   return (
     <div className="product-content">
@@ -24,41 +36,37 @@ let ProductContent = (props) => {
           <ProductCategory
             categories={props.productPage.categories}
             getProducts={props.getProducts}
-            getProductCategories={props.getProductCategories}
-          />
+            getProductCategories={props.getProductCategories}/>
         </div>
       </div>
 
       {/* product categories */}
       <div className="product-content__products">
-  
-          
-          {props.productPage.isLoading 
-            ? <>
-              <LoadingCard/>
-              <LoadingCard/>
-              <LoadingCard/>
-              <LoadingCard/>
-              <LoadingCard/>
-             </>
-
-            : props.productPage.products &&
-               props.productPage.products.map((el) => (
-                <ProductList
-                  key={el.id}
-                  productData={el}
-                  getProductCategories={props.getProductCategories}
-                  basketProductAdd={props.basketProductAdd}
-                  basketProductRemove={props.basketProductRemove}
-                  getProducts={props.getProducts}
-                  userBasket={props.userBasket}
-                  getUserBasket={props.getUserBasket}
-                  addLoading={props.addLoading}
-                  auth={props.auth}
-                />
-              ))
-          }
-         
+        {props.productPage.isLoading ? (
+          <>
+            <LoadingCard />
+            <LoadingCard />
+            <LoadingCard />
+            <LoadingCard />
+            <LoadingCard />
+          </>
+        ) : (
+          props.productPage.products &&
+          props.productPage.products.map((el) => (
+            <ProductList
+              key={el.id}
+              productData={el}
+              getProductCategories={props.getProductCategories}
+              basketProductAdd={props.basketProductAdd}
+              basketProductRemove={props.basketProductRemove}
+              getProducts={props.getProducts}
+              userBasket={props.userBasket}
+              getUserBasket={props.getUserBasket}
+              addLoading={props.addLoading}
+              auth={props.auth}
+            />
+          ))
+        )}
       </div>
 
       {/* basket   */}
@@ -72,7 +80,7 @@ let ProductContent = (props) => {
             <span>{props.userBasket && props.userBasket.length} item</span>
           </div>
           <div className="basket-price">
-            $ <span>0.00</span>
+            $ <span>{totalPrice}</span>
           </div>
         </div>
       )}
@@ -87,7 +95,8 @@ let ProductContent = (props) => {
       >
         <div className="lists__count">
           <p>
-            <IoBagCheck /> <span> 0 item </span>
+            <IoBagCheck />
+            <span> {props.userBasket && props.userBasket.length} item </span>
           </p>
           <button onClick={() => setBasketList(!basketListShow)}>
             <AiOutlineClose />
@@ -95,7 +104,7 @@ let ProductContent = (props) => {
         </div>
 
         <div className="lists__content">
-          {(props.userBasket &&  props.userBasket.length !== [] )? (
+          {props.userBasket &&
             props.userBasket.map((el) => (
               <ProductBasketLists
                 basketProductRemove={props.basketProductRemove}
@@ -105,8 +114,9 @@ let ProductContent = (props) => {
                 closeProductPanel={props.closeProductPanel}
                 basketData={el}
               />
-            ))
-          ) : (
+            ))}
+
+          {props.userBasket && props.userBasket.length === 0  && 
             <div className="lists__content__null">
               <div className="null-basket-img">
                 <svg
@@ -244,27 +254,31 @@ let ProductContent = (props) => {
               </div>
               <p>No product found</p>
             </div>
-          )}
+          }
         </div>
 
-        <div className="lists__checkout">
-          <h2>Checkout</h2>
-
-          <span>$ 0.00 </span>
+        <div className="lists__checkout" onClick={()=> { 
+          props.userBasket.map((el) => {
+                  props.orderCheckout(el.product.id,el.count)
+                  props.basketProductRemove(el.id)
+                  props.getUserBasket()
+        })
+        }}>
+          <h2 >Checkout</h2>
+          <span>$ {totalPrice} </span>
         </div>
       </div>
-
       <button
         className="loadMore"
-        disabled={limitClick === pageCountNext? true :false}
+        disabled={limitClick === pageCountNext ? true : false}
         onClick={() => {
           setPageCount((pageCountNext) =>
             pageCountNext < limitClick ? pageCountNext + 1 : limitClick
           );
-          props.loadMore(pageCountNext+1);
+          props.loadMore(pageCountNext + 1);
         }}
       >
-       {limitClick === pageCountNext ? 'No Product': 'Load More'}
+        {limitClick === pageCountNext ? "No Product" : "Load More"}
       </button>
     </div>
   );

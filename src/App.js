@@ -9,7 +9,7 @@ import './sass/App.scss';
 let App = () => {
   return (
    <>
-     <Route path='/picbazar/'  component={HeaderContainer}/>
+      <Route path='/picbazar/'  component={HeaderContainer}/>
       <Route path='/picbazar/' exact component={ProductPageContainer}/>
       <Route path='/picbazar/profile'  component={ProfilePageContainer}/>
       <Route path='/picbazar/owner-order' component={OwnOrderPageContainer}/>

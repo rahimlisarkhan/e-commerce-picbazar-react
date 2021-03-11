@@ -10,7 +10,7 @@ let ProductList = (props) => {
   const [count, setCount] = useState(0);
   const [productPopupOpen, setPopup] = useState(false);
 
-  console.log(props.addLoading)
+console.log(props);
 
   useEffect(() => {
     var productCount =
@@ -20,7 +20,7 @@ let ProductList = (props) => {
 
     productCount && setCount(productCount.count);
     props.addLoading && setCount(0)
-    props.addLoading &&  props.getUserBasket();
+    // props.addLoading &&  props.getUserBasket();
   }, [props.userBasket,props.addLoading]);
 
   
@@ -85,6 +85,7 @@ let ProductList = (props) => {
                       prevCount <= 0 ? 0 : prevCount - 1
                     );
                     // count === 0 ? props.basketProductRemove(props.productData.id)
+
                     props.basketProductAdd(props.productData.id, count - 1);
                     props.getUserBasket();
                   }}
@@ -175,6 +176,7 @@ let ProductList = (props) => {
                       setCount((prevCount) =>
                         prevCount <= 0 ? 0 : prevCount - 1
                       );
+                      // count <= 0 && props.basketProductRemove(props.productData.id)
                       props.basketProductAdd(props.productData.id, count - 1);
                       props.getUserBasket();
                     }}

@@ -8,7 +8,8 @@ import {AiOutlineMinus,AiOutlinePlus,AiOutlineClose} from 'react-icons/ai'
     const [count,setCount] = useState(null)
     const [closePanel, setClosePanel] = useState(false)
 
-    useEffect(() =>{setCount(props.basketData.count)
+    useEffect(() =>{
+        setCount(props.basketData.count)
             
     },[props.basketData])
 
@@ -25,7 +26,7 @@ import {AiOutlineMinus,AiOutlinePlus,AiOutlineClose} from 'react-icons/ai'
                                             }
             } />
 
-            {count}
+            {props.basketData.count}
               <AiOutlinePlus onClick={() => {setCount(nextCount => nextCount + 1)
                                              props.basketProductAdd(props.basketData.product.id,count+1)
                                              props.getUserBasket()

@@ -12,6 +12,7 @@ import {
   basketProductRemove,
   getUserBasket,
 } from "../../redux/actions/productPageActions";
+import {orderCheckout} from '../../redux/actions/orderPageAction'
 import { checkToken } from "../../redux/actions/authActions";
 import { getUser } from "../../redux/actions/profilePageActions";
 import { ToastContainer } from "react-toastify";
@@ -41,6 +42,9 @@ let ProductPageContainer = (props) => {
         getProductCategories={(id) => props.getProductCategories(id)}
         loadMore = {(n) => props.getProducts(n)}
         getProducts={()=>props.getProducts()}
+        orderCheckout={(productID, productCount) =>
+          props.orderCheckout(productID, productCount)
+        }
         basketProductAdd={(productID, productCount) =>
           props.basketProductAdd(productID, productCount)
         }
@@ -76,7 +80,7 @@ export default compose(
     basketProductAdd,
     basketProductRemove,
     getUserBasket,
-    checkToken
-    
+    checkToken,
+    orderCheckout,
   })
 )(ProductPageContainer);
