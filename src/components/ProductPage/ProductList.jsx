@@ -10,15 +10,20 @@ let ProductList = (props) => {
   const [count, setCount] = useState(0);
   const [productPopupOpen, setPopup] = useState(false);
 
+  console.log(props.addLoading)
+
   useEffect(() => {
     var productCount =
-      props.productData &&
-      props.userBasket &&
-      props.userBasket.find((el) => el.product.id === props.productData.id);
+        props.productData &&
+        props.userBasket &&
+        props.userBasket.find((el) => el.product.id === props.productData.id);
 
     productCount && setCount(productCount.count);
-  }, [props.userBasket]);
+    props.addLoading && setCount(0)
+    props.addLoading &&  props.getUserBasket();
+  }, [props.userBasket,props.addLoading]);
 
+  
   return (
     <>
       {/* Product Card */}
@@ -47,8 +52,8 @@ let ProductList = (props) => {
               props.getOwnerProduct();
             }}
           >
-            {" "}
-            <RiDeleteBin2Line />{" "}
+            
+            <RiDeleteBin2Line />
           </button>
         )}
 
@@ -72,7 +77,7 @@ let ProductList = (props) => {
               </span>
               }
 
-              {count > 0 && 
+              {(count > 0) && 
               <span className="cart bg-green">
                 <AiOutlineMinus
                   onClick={() => {
@@ -94,8 +99,6 @@ let ProductList = (props) => {
                   }}
                 />
               </span>}
-            
-
           </div>
         )}
       </div>
@@ -148,6 +151,24 @@ let ProductList = (props) => {
             {props.auth && (
               <div className="product-info__add">
                 <span>$ {props.productData.price}</span>
+                
+              {(countShow || count <= 0) &&
+              <span
+                className="cart"
+                onClick={() => {
+                  setCountShow(false);
+                  setCount(1);
+                  props.basketProductAdd(props.productData.id, 1);
+                  props.getUserBasket();
+                }}
+              >
+                <IoBasketSharp />
+                Cart
+              </span>
+              }
+
+
+                {count > 0 && 
                 <span>
                   <AiOutlineMinus
                     onClick={() => {
@@ -166,7 +187,7 @@ let ProductList = (props) => {
                       props.getUserBasket();
                     }}
                   />
-                </span>
+                </span>}
               </div>
             )}
           </div>

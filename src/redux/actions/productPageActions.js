@@ -67,21 +67,20 @@ export const basketProductAdd = (productID,productCount) => dispatch => {
     baseURL.post('/api/basket/',data)
     .then(res => {console.log(res)
                   dispatch({type:type.ADD_REMOVE_USER_BASKET,payload:res.data})
-
+                  dispatch({type:type.ADD_LOADING,payload:true})
     })
+    .catch(err => toast(err.message))
+    .finally(()=> dispatch({type:type.ADD_LOADING,payload:false}))
 }
+
 
 //BASKET PRODUCT REMOVE
 export const basketProductRemove = (productID) => dispatch => {
-    
-    console.log(productID);
-       
-       
+    dispatch({type:type.ADD_LOADING,payload:false})
         baseURL.delete(`/api/basket/${productID}/`)
         .then(res =>{ console.log(res)
-            dispatch({type:type.CLOSE_PRODUCT_PANEL,payload:true})
+            dispatch({type:type.ADD_LOADING,payload:true})
         })
-        .finally(()=>dispatch({type:type.CLOSE_PRODUCT_PANEL,payload:false}))
 
 }
 

@@ -4,7 +4,6 @@ import {AiOutlineMinus,AiOutlinePlus,AiOutlineClose} from 'react-icons/ai'
 
  let ProductBasketLists = (props) => {
 
-console.log(props.closeProductPanel);
 
     const [count,setCount] = useState(null)
     const [closePanel, setClosePanel] = useState(false)

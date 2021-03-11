@@ -34,6 +34,7 @@ let ProductPageContainer = (props) => {
       <ProductContent
         auth={props.auth}
         userBasket={props.userBasket}
+        addLoading={props.addLoading}
         productPage={props.productPage}
         closeProductPanel={props.closeProductPanel}
         userProductCount={props.userProductCount}
@@ -62,7 +63,8 @@ let mapStateToProps = (state) => ({
   userBasket: state.userInfo.userBasket,
   userProductCount:state.userInfo.userProductCount,
   auth: state.authentication.auth,
-  closeProductPanel:state.userInfo.closeProductPanel
+  closeProductPanel:state.userInfo.closeProductPanel,
+  addLoading:state.productPage.addLoading
 });
 
 export default compose(
