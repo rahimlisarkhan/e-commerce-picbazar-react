@@ -25,7 +25,7 @@ import { getOwnerProduct } from "../redux/actions/ownerPageActions";
 //ICONS
 import { MdDashboard } from "react-icons/md";
 import * as aiIcon from "react-icons/ai";
-import {FaCalendarCheck, FaUserAlt} from 'react-icons/fa';
+import {FaCalendarCheck} from 'react-icons/fa';
 import { IoBagCheckSharp } from "react-icons/io5";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 
@@ -213,7 +213,7 @@ const HeaderContainer = (props) => {
                 <MdDashboard/> Dashboard
               </NavLink>
               <NavLink to="/picbazar/profile"  className="dropLink"  onClick={() => setProfileMenu(!openProfile)}>
-                 <FaUserAlt/>Profile
+                 <aiIcon.AiTwotoneShop/>Profile
               </NavLink>
               <NavLink to="/picbazar/owner-order" className="dropLink"  onClick={() => setProfileMenu(!openProfile)}>
                 <FaCalendarCheck/> Own products

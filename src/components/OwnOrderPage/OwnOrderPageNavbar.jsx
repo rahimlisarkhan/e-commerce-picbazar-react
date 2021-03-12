@@ -1,9 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import {MdDashboard} from 'react-icons/md'
-import { FaCalendarCheck, FaUserAlt } from 'react-icons/fa'
+import { FaCalendarCheck } from 'react-icons/fa'
 import { IoBagCheckSharp } from 'react-icons/io5'
 import { RiLogoutBoxRFill } from 'react-icons/ri'
+import { AiTwotoneShop } from 'react-icons/ai'
+
 
  let OwnOrderPageNavbar = (props) => {
 
@@ -14,7 +16,7 @@ import { RiLogoutBoxRFill } from 'react-icons/ri'
               <MdDashboard/> Dashboard
               </NavLink>
               <NavLink to="/picbazar/profile" activeClassName="activeNav"  className="dropLink">
-                <FaUserAlt/>Profile
+                <AiTwotoneShop/>Profile
               </NavLink>
               <NavLink to="/picbazar/owner-order" className="dropLink" activeClassName="activeNav">
                <FaCalendarCheck/> Owner products

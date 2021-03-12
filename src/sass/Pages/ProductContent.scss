@@ -81,8 +81,8 @@
             }
 
             &:hover .overlay-popup{
-                opacity: 1;
-                height: 100%;
+                opacity: .9;
+                height: 85%;
             }
 
             .overlay-popup{
@@ -96,28 +96,27 @@
                 padding: 1rem;
                 width: 100%;
                 opacity: 0;
-                height: 85%;
-                background-color: rgba(0, 0, 0, 0.651);
+                height: 75%;
+                background-color: rgb(255, 255, 255);
 
                 p{
                     position: absolute;
                     top: 2%;
                     left: 2%;
-                    color: rgb(247, 210, 141);
+                    color: $color-green;
                     font-weight: bold;
                     font-size: 2rem;
                 }
                 img{
                     width: 85%;
                     height: 25rem;
-                    box-shadow: 0 .1rem 4rem rgba(0, 0, 0, 0.603);
                     border-radius: 50%;
                 }
                 h1{
                     margin-top: 2rem;
                     font-size: 3rem;
                     text-align: center;
-                    color: rgb(241, 241, 241);
+                    color: $color-dark;
                 }
 
             }
