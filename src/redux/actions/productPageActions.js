@@ -87,7 +87,7 @@ export const basketProductAdd = (productID,productCount) => dispatch => {
         count:productCount
     }
     baseURL.post('/api/basket/',data)
-    .then(res => {console.log(res)
+    .then(res => {console.log(res.data)
                   dispatch({type:type.ADD_REMOVE_USER_BASKET,payload:res.data})
                   dispatch({type:type.ADD_LOADING,payload:true})
     })

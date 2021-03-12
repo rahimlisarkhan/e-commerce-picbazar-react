@@ -1,11 +1,11 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import * as Yup from "yup";
 import Loading from '../../common/Loading'
 
 
-//VALIDATE MESSAGES
+//VALIDATE MESSAGES 
 const ProfileForm = Yup.object().shape({
   first_name: Yup.string()
     .min(3, "Too Short!")

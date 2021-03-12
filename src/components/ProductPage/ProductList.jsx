@@ -13,6 +13,9 @@ let ProductList = (props) => {
   const [countView, setViewCount] = useState(0);
   const [imgView, setimgView] = useState(false)
 
+  console.log(props);
+
+
   useEffect(() => {
     var productCount =
       props.productData &&
@@ -33,7 +36,12 @@ let ProductList = (props) => {
           <div
             className="overlay-popup"
             onClick={() => setPopup(!productPopupOpen)}
-          ></div>
+          > 
+            <p>seller</p>
+            <img src={props.productData.owner.image} />
+            <h1>{props.productData.owner.first_name} {props.productData.owner.last_name}</h1>
+
+          </div>
         )}
 
         {props.location === "/picbazar/your-order" && (
@@ -227,7 +235,12 @@ let ProductList = (props) => {
               </div>
             )}
           </div>
-
+          
+          <div className="seller-info">
+            <h1>Seller:</h1>
+            <h1>{props.productData.owner.first_name} {props.productData.owner.last_name}</h1>
+            <img src={props.productData.owner.image} alt="seller logo"/>
+          </div>
           <button
             className="popup-close"
             onClick={() => setPopup(!productPopupOpen)}

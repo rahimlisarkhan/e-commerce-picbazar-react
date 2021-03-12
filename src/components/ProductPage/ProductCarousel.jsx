@@ -8,6 +8,8 @@ import video from '../../img/backVideo.mp4'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import translate from '../../lang/translate';
+import { FormattedMessage } from 'react-intl';
 
 let ProductCarousel = () => {
     
@@ -30,6 +32,7 @@ let ProductCarousel = () => {
         playsInline : true,
         loop : true,
     }
+
     return (
         <div className='product-carousel'>
               <VideoTag className='bg-video' src={video} {...defaults} />
@@ -37,12 +40,15 @@ let ProductCarousel = () => {
 
                 
           
-                <h1>Groceries Delivered in 90 Minute</h1>
-                <p>Get your healthy foods & snacks delivered at your doorsteps all day everyday</p>
+            <h1>{translate("carouseltitle")}</h1>
+            <p>{translate("carouseldesc")}</p>
 
                 <div className="input-group">
-                    <input type='text' name='search' placeholder='Search your products from here'/>
-                    <button> <BsSearch/> Search</button>
+                <FormattedMessage id="searchPlaceholder">
+                {placeholder=>  
+                <input type='text' name='search'  placeholder={placeholder}/>}
+                 </FormattedMessage>
+                    <button> <BsSearch/> {translate("searchbtn")}</button>
                 </div>
             </div>
           

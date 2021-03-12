@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import logo from "../img/logo.svg";
+
+//LANG
+import ru from "../lang/messages/ru.json";
+import en from "../lang/messages/en.json";
+import tr from "../lang/messages/tr.json";
+import az from "../lang/messages/az.json";
+import translate from "../lang/translate";
+
 
 //COMPONENTS
 import JoinPopup from "./Auth/JoinPopup";
@@ -24,12 +32,9 @@ import { RiLogoutBoxRFill } from "react-icons/ri";
 
 const HeaderContainer = (props) => {
 
-
   useEffect(() => {
-    
     props.panelOpenClose && props.getCategories();
     setJoinPopup(props.openLoginPage)
-    
   },[props.openLoginPage]);
   
   console.log(props);
@@ -56,28 +61,49 @@ const HeaderContainer = (props) => {
 
         {/* lang dropdown */}
         <div className={langOpen ? "dropdown-lang openshow" : "dropdown-lang"}>
-          <span>
+          <span onClick={() =>{
+              props.setMessages(en)
+              props.setLocale('en')
+              setLangDrop(false)
+          }}
+          >
             <img
               src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png"
               alt="flag"
             />
             English
           </span>
-          <span>
+
+          <span onClick={() =>{
+              props.setMessages(az)
+              props.setLocale('az')
+              setLangDrop(false)
+          }}>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/7/78/Flag_of_Azerbaijan_1918.svg"
               alt="flag"
             />
             Azərbaycanca
           </span>
-          <span>
+          
+          <span onClick={() =>{
+              props.setMessages(tr)
+              props.setLocale('tr')
+              setLangDrop(false)
+
+          }}>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/800px-Flag_of_Turkey.svg.png"
               alt="flag"
             />
             Türkçe
           </span>
-          <span>
+          <span onClick={() =>{
+              props.setMessages(ru)
+              props.setLocale('ru')
+              setLangDrop(false)
+
+          }}>
             <img
               src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/1200px-Flag_of_Russia.svg.png"
               alt="flag"
@@ -95,7 +121,7 @@ const HeaderContainer = (props) => {
                 alt="lang"
               />
             </span>
-            Choose
+            {translate("choose")}
           </button>
         )}
 
@@ -145,7 +171,7 @@ const HeaderContainer = (props) => {
 
         {!props.auth && (
           <button className="join" onClick={() => setSignUpPopup(!SignUpOpen)}>
-            Sign up
+            {translate("singup")}
           </button>
         )}
 
@@ -160,7 +186,7 @@ const HeaderContainer = (props) => {
 
         {!props.auth && (
           <button className="join" onClick={() => setJoinPopup(!JoinOpen)}>
-            Join
+             {translate("login")}
           </button>
         )}
 
@@ -183,16 +209,16 @@ const HeaderContainer = (props) => {
                   : "profile__content__dropMenu"
               }
             >
-              <NavLink to="/picbazar/" exact className="dropLink">
+              <NavLink to="/picbazar/" exact className="dropLink"  onClick={() => setProfileMenu(!openProfile)}>
                 <MdDashboard/> Dashboard
               </NavLink>
-              <NavLink to="/picbazar/profile"  className="dropLink">
+              <NavLink to="/picbazar/profile"  className="dropLink"  onClick={() => setProfileMenu(!openProfile)}>
                  <FaUserAlt/>Profile
               </NavLink>
-              <NavLink to="/picbazar/owner-order" className="dropLink">
+              <NavLink to="/picbazar/owner-order" className="dropLink"  onClick={() => setProfileMenu(!openProfile)}>
                 <FaCalendarCheck/> Own products
               </NavLink>
-              <NavLink to="/picbazar/your-order" className="dropLink">
+              <NavLink to="/picbazar/your-order" className="dropLink" onClick={() => setProfileMenu(!openProfile)}>
                 <IoBagCheckSharp/> My order
               </NavLink>
               <NavLink to="/picbazar/" className="dropLink" onClick={()=>props.logout(props.history.push) } >
@@ -224,4 +250,4 @@ export default compose(
                             createCategories,
                             createAddProduct
                           })
-                          )(HeaderContainer);
+                          )(withRouter( HeaderContainer));
