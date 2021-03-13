@@ -1,0 +1,188 @@
+.blog-section{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.blog-card{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin-bottom: 7rem;
+    height:auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 .1rem 2rem rgba(0, 0, 0, 0.137);
+    padding: 2rem;
+    cursor: zoom-in;
+    backface-visibility: hidden;
+
+    &:hover{
+        transform: scale(1.2);
+        box-shadow: 0 .1rem 5rem rgba(0, 0, 0, 0.759);
+    }
+
+ 
+    &__market{
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        justify-content: flex-start;
+        height: 20%;
+        border-bottom: .1rem solid rgba(0, 0, 0, 0.192);
+        
+        img{
+            border-radius: 50%;
+            box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.432);
+            width: 4rem;
+            height: 4rem;
+        }
+        h2{
+            margin-left: 1rem;
+            font-size: 2rem;
+            letter-spacing: .5rem;
+        }
+      
+    }
+
+    &__info{
+        height: 80%;
+        padding: 1rem;
+        margin: 1rem 0;
+        border-bottom: .1rem solid rgba(0, 0, 0, 0.192);
+
+        h3{
+            font-size: 3rem;
+            letter-spacing: .2rem;
+        }
+
+        h4{
+            margin: 1.5rem 0;
+            font-size: 2.5rem;
+        }
+        p{  
+            height: 25rem;
+            overflow: auto;
+            font-size: 1.8rem;
+            letter-spacing: .1rem;
+            line-height: 1.2;
+        }
+    }
+    span{
+        margin-top: 1rem;
+        font-size: 1.6rem;
+    }
+}
+
+.blog-form{
+    position: fixed;
+    left: 20%;
+    bottom: -100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 .1rem 3rem rgba(0, 0, 0, 0.315);
+    width: 70%;
+    height: 600px;
+
+
+    .form-blog{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        height: 80%;
+        
+        
+        &__container{
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &__group{
+                display: flex;
+                width: 60%;
+                flex-direction: column;
+                margin: 1rem 0;
+
+                label{
+                    color: $color-green;
+                    font-size: 2rem;
+                    margin-bottom: .5rem;
+                }
+                input,
+                textarea{
+                    border: none;
+                    outline: none;
+                    background-color: rgb(245, 245, 245);
+                    height: 4.5rem;
+                    font-size: 2rem;
+                    color: $color-dark;
+                    padding: .5rem;
+                }
+                textarea{
+                    height: 8rem !important;
+                }
+
+            }
+        }
+
+    }
+
+    .form-blog-btn{
+        height: 10%;
+        display: flex;
+        justify-content: space-evenly;
+    
+        button{
+            width: 17%;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            padding: 1rem;
+            font-size: 1.8rem;
+            color: red;
+            cursor: pointer;
+
+            &:hover{
+                background-color: rgb(238, 238, 238);
+            }
+            &:last-child{
+                color: white;
+                background-color: $color-green;
+                
+                &:hover{
+                    background-color: rgb(22, 134, 91);
+                }
+            }
+
+
+        }
+    }
+}
+
+
+.blog-add{
+    position: fixed;
+    top: 70%;
+    outline: none;
+    right: 2%;
+    font-size: 4rem;
+    padding: .5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.24);
+    border-radius: 50%;
+    background-color: white;
+    color: orangered;  
+    border: none;
+
+    &:hover{
+        transform: scale(1.05);
+        background-color: orangered;
+        color: rgb(255, 255, 255); 
+    }
+}
+
+.blog-show{
+    bottom: 0;
+}

@@ -3,7 +3,7 @@ import * as type from '../types'
 import {baseURL} from './baseURL'
 
 
-
+//Register
 export const getRegisterAuth = data => dispatch => {
     baseURL.post('/accounts/api/register/',data)
             .then((resp) =>{ dispatch({type:type.GET_LOGIN_PAGE, payload:true }) 
@@ -11,9 +11,11 @@ export const getRegisterAuth = data => dispatch => {
             .catch((err) => toast.error(err.message))
 }
 
-
+//Login
 export const getLoginAuth = data => dispatch => {
+    
     dispatch({type:type.GET_LOGIN_PAGE, payload:null})
+    
     baseURL.post('/accounts/api/login/',data)
            .then((resp) =>{ console.log(resp)  
                 
@@ -25,6 +27,7 @@ export const getLoginAuth = data => dispatch => {
                 
                 //write redux
                 dispatch({type:type.IS_AUTH, payload:resp.data.token})
+
                 dispatch({type:type.GET_LOGIN_PAGE, payload:false})
 
                 //message
@@ -34,14 +37,13 @@ export const getLoginAuth = data => dispatch => {
 }
 
 
-
+//Logout
 export const logout = (callback) => dispatch =>{
     window.localStorage.clear()
     dispatch({type:type.IS_AUTH, payload:null})
     callback('/picbazar/')
     toast.warning('Logged out')
 }
-
 
 
 //Check token

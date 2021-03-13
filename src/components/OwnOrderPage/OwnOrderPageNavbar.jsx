@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import {MdDashboard} from 'react-icons/md'
-import { FaCalendarCheck } from 'react-icons/fa'
+import { FaBlog, FaCalendarCheck } from 'react-icons/fa'
 import { IoBagCheckSharp } from 'react-icons/io5'
 import { RiLogoutBoxRFill } from 'react-icons/ri'
 import { AiTwotoneShop } from 'react-icons/ai'
@@ -22,7 +22,10 @@ import { AiTwotoneShop } from 'react-icons/ai'
                <FaCalendarCheck/> Owner products
               </NavLink>
               <NavLink to="/picbazar/your-order" activeClassName="activeNav" className="dropLink">
-                <IoBagCheckSharp/> My order
+                <IoBagCheckSharp/> We order
+              </NavLink>
+              <NavLink to="/picbazar/market-blog" activeClassName="activeNav" className="dropLink">
+                <FaBlog/> Market Blog
               </NavLink>
               <NavLink to="/picbazar/" className="dropLink" onClick={()=> props.logout()}>
                 <RiLogoutBoxRFill/> Log out

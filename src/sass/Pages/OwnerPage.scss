@@ -34,22 +34,22 @@ box-shadow: none;
 //Owner Page
 .owner-container{
     display: flex;
-    height: auto;
-    background-color: rgb(247,247,247);
+    background-color: rgb(255, 255, 255);
 
     &__navbar{
         width: 13.9%;
         position: relative;
-        background-color: rgb(255, 255, 255);
         height: 100%;
 
         &__fixed{
             position: fixed;
             display: flex;
+            padding:1rem 0  1rem 2rem;
             flex-direction: column;
             top: 15%;
-            left: 2%;
-            width: 12%;
+            background-color: rgb(255, 255, 255) !important;
+            left: 1%;
+            width: 15%;
             height: 80%;
 
             a{
@@ -68,16 +68,15 @@ box-shadow: none;
     }
 
     &__section{
-        width: 80%;
+        width: 85%;
         display: flex;
-        height: 100vh;
+        height: auto;
         flex-wrap: wrap;
         justify-content: space-evenly;
         align-self:space-evenly;
         padding:9rem 6rem;
         margin: 5rem;
-        background-color: rgb(255, 255, 255);
-        box-shadow: 0 .1rem .3rem rgba(0, 0, 0, 0.247);
+        background-color: rgb(247,247,247);
         position: relative;
 
         h1{

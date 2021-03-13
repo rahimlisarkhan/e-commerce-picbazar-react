@@ -25,7 +25,7 @@ import { getOwnerProduct } from "../redux/actions/ownerPageActions";
 //ICONS
 import { MdDashboard } from "react-icons/md";
 import * as aiIcon from "react-icons/ai";
-import {FaCalendarCheck} from 'react-icons/fa';
+import {FaCalendarCheck,FaBlog} from 'react-icons/fa';
 import { IoBagCheckSharp } from "react-icons/io5";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 
@@ -34,14 +34,17 @@ const HeaderContainer = (props) => {
 
   useEffect(() => {
     props.panelOpenClose && props.getCategories();
+    
+    
     setJoinPopup(props.openLoginPage)
+    
   },[props.openLoginPage]);
   
   console.log(props);
   
   //Hooks
   const [langOpen, setLangDrop] = useState(false),
-        [JoinOpen, setJoinPopup] = useState(false),
+        [JoinOpen, setJoinPopup] = useState(true),
         [productAddOpen, setAddPanel] = useState(props.isLoading),
         [SignUpOpen, setSignUpPopup] = useState(false),
         [openProfile, setProfileMenu] = useState(false);
@@ -125,6 +128,11 @@ const HeaderContainer = (props) => {
           </button>
         )}
 
+
+        {/* faq */}
+        <button className="lang">
+          FAQ
+        </button>
 
         {/* owner product add */}
         {props.location.pathname === "/picbazar/owner-order" && (
@@ -219,7 +227,10 @@ const HeaderContainer = (props) => {
                 <FaCalendarCheck/> Own products
               </NavLink>
               <NavLink to="/picbazar/your-order" className="dropLink" onClick={() => setProfileMenu(!openProfile)}>
-                <IoBagCheckSharp/> My order
+                <IoBagCheckSharp/> We order
+              </NavLink>
+              <NavLink to="/picbazar/market-blog" className="dropLink" onClick={() => setProfileMenu(!openProfile)}>
+                <FaBlog/> Market Blog
               </NavLink>
               <NavLink to="/picbazar/" className="dropLink" onClick={()=>props.logout(props.history.push) } >
                 <RiLogoutBoxRFill/> Log out
@@ -250,4 +261,4 @@ export default compose(
                             createCategories,
                             createAddProduct
                           })
-                          )(withRouter( HeaderContainer));
+                          )(withRouter(HeaderContainer));

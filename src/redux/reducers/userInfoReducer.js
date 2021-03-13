@@ -8,6 +8,7 @@ let initialState ={
     ownProduct:null,
     orderProduct:null,
     closeProductPanel:false,
+    blogs:null,
 }
 
 export const userInfoReducer = (state=initialState,action) => {
@@ -34,6 +35,12 @@ export const userInfoReducer = (state=initialState,action) => {
 
         case type.CLOSE_PRODUCT_PANEL:
             return {...state, closeProductPanel:action.payload}
+        
+        case type.GET_BLOGS:
+            return {...state, blogs:action.payload}
+        
+        case type.ADD_BLOGS:
+            return {...state, blogs:[...state.blogs, action.payload]}
 
         default:
             return state

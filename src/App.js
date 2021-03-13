@@ -9,6 +9,8 @@ import OwnOrderPageContainer from "./components/OwnOrderPage/OwnOrderPageContain
 import ProductPageContainer from "./components/ProductPage/ProductPageContainer";
 import ProfilePageContainer from "./components/ProfilePage/ProfilePageContainer";
 import YourOrderPageContainer from "./components/YourOrderPage/YourOrderPageContainer";
+import BlogPageContainer from "./components/BlogPage/BlogPageContainer";
+
 import en from "./lang/messages/en.json";
 
 let App = () => {
@@ -29,6 +31,7 @@ let App = () => {
       <Route path="/picbazar/profile" component={ProfilePageContainer} />
       <Route path="/picbazar/owner-order" component={OwnOrderPageContainer} />
       <Route path="/picbazar/your-order" component={YourOrderPageContainer} />
+      <Route path="/picbazar/market-blog" component={BlogPageContainer} />
       <Redirect from="/" to="/picbazar" />
     </IntlProvider>
   );
