@@ -1,54 +1,54 @@
-.navbar{
+.navbar {
     display: flex;
     border-right: .1rem solid rgba(128, 9, 128, 0.342);
-    flex-direction: column;
     justify-content: flex-start;
     text-transform: capitalize;
-    @include respond(phone){
+
+    @include respond(phone) {
         background-color: rgb(255, 255, 255) !important;
     }
-   
-    .navbar-content{
+
+    .navbar-content {
         display: flex;
         position: fixed;
         background-color: rgb(29, 11, 124);
-        width:15% !important;
-        height:100vh;
+        width: 15% !important;
+        height: 100vh;
         padding: 3rem;
-        width:10%;
+        width: 10%;
         flex-direction: column;
 
-           
-    @include respond(phone){
-        position: static;
-        width: 100% !important;
-        height:7rem;
-        flex-direction: row;
-        align-items: center;
-        padding: 0;
+        @include respond(phone) {
+            width: 80%;
+        }
+
+
     }
-    }
-    a{  
+
+    a {
         text-decoration: none;
         cursor: pointer;
         padding: 2rem;
         font-size: 1.8rem;
         color: rgb(246, 246, 246);
         font-weight: 500;
-        @include respond(phone){
+
+        @include respond(phone) {
             font-size: 1.6rem;
         }
-        &:hover{
+
+        &:hover {
             background-color: rgba(203, 201, 248, 0.151);
             color: rgb(255, 255, 255);
             ;
         }
     }
 
-    .hamburger-btn{
+    .hamburger-btn {
         width: 10rem;
         height: 8rem;
         padding: 2rem;
+
         display: none;
         flex-direction: column;
         align-items: flex-start;
@@ -57,43 +57,58 @@
         outline: none;
         border: none;
         cursor: pointer;
-        @include respond(phone){
-            
-        display: flex;
+
+        @include respond(phone) {
+            width: 20%;
+            height: 6rem;
+            padding: 1rem;
+            display: flex;
 
         }
-        span{
+
+        span {
             width: 70%;
             background-color: $color-dark;
             height: .3rem;
-            
-            &:nth-child(2){
+
+            &:nth-child(2) {
                 width: 50%;
             }
-            &:last-child{
+
+            &:last-child {
                 width: 60%;
             }
-        
-        
 
-       
+
+
+
+        }
+
+        &:hover span {
+
+            width: 60%;
+
+            &:nth-child(2) {
+                width: 50%;
             }
 
-    &:hover span{
-            
-        width: 60%;
-        &:nth-child(2){
-            width: 50%;
+            &:last-child {
+                width: 70%;
+            }
         }
-        &:last-child{
-            width: 70%;
+    }
+
+}
+
+.lang {
+    p {
+        @include respond(phone) {
+            display: none;
         }
     }
 }
 
-}
-
-.nav-fix{
+.nav-fix {
     width: 100%;
     position: fixed;
     opacity: 1;
@@ -101,3 +116,94 @@
 }
 
 //nav mobile
+.navbar-mobile {
+    display: none;
+    @include respond(phone) {
+        position: fixed;
+        top: 0;
+        left: -110%;
+        display: flex;
+        flex-direction: column;
+        z-index: -88;
+        background-color: rgb(255, 255, 255);
+        width: 85%;
+        height: 100%;
+    
+    &__close{
+        height: 10%;
+        padding: 1.5rem;
+        svg{
+            color: $color-dark;
+            font-size: 2.6rem !important;
+        }
+  
+    }
+
+    &__img{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 20%;
+        background-color: rgb(241, 241, 241);
+        img{
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            box-shadow: 0 .1rem 2rem rgba(0, 0, 0, 0.288);
+        }
+        h2{
+            font-size: 2rem;
+        }
+
+        button{
+            background-color: $color-green;
+            padding:1rem 1.6rem;
+            color: white;
+            font-size: 1.6rem;
+            border-radius: 1rem;
+            outline: none;
+            border: none;
+        }
+    }
+    &__menu{
+        display: flex;
+        flex-direction: column;
+        height: 60%;
+        padding: 2rem;
+   
+        a{
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: $color-dark !important;
+            font-weight: normal !important;
+            font-size: 1.8rem;
+            margin: .7rem 0;
+            padding: 1rem 1.6rem;
+            svg{
+                margin-right: 1rem;
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+}
+
+//nav mobile show modifiy
+.navbar-mobile_show{
+    @include respond(phone) {
+    left: 0;
+    z-index: 88;
+    box-shadow: 8rem 0 0  2rem rgba(0, 0, 0, 0.404);
+    }
+}

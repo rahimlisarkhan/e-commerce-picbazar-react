@@ -9,7 +9,7 @@ let YourOrderPageSection = (props) => {
   useEffect(() => {
       
     let totalAmount = 0;
-    props.orderProduct &&
+    (props.orderProduct && props.auth) &&
       props.orderProduct.map(
         (el) =>
           (totalAmount += parseInt(el.count) * parseFloat(el.product.price))
@@ -32,7 +32,7 @@ let YourOrderPageSection = (props) => {
           <LoadingCard />
         </>
        : 
-        (props.orderProduct || ( props.orderProduct  &&  props.orderProduct.length !== 0))?
+       (props.orderProduct  &&  props.orderProduct.length !== null)?
         props.orderProduct.map((el) => (
           <ProductList
             productData={el.product}

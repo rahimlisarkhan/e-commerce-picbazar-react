@@ -22,6 +22,7 @@ import Loading from "../../common/Loading";
 
 let ProductPageContainer = (props) => {
 
+  
   useEffect(() => {
 
     props.location.pathname === '/picbazar' && props.getProducts();

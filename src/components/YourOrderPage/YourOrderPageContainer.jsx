@@ -21,6 +21,7 @@ import YourOrderPageSection from './YourOrderPageSection'
         <YourOrderPageSection orderProduct={props.orderProduct}
                               location={props.location.pathname}
                               isLoading={props.isLoading}
+                              auth={props.auth}
                               orderRemove={(id) => props.orderRemove(id)}
                               getYourProduct={()=> props.getYourProduct() }
                            />
