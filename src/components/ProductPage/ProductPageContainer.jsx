@@ -17,6 +17,7 @@ import {orderCheckout} from '../../redux/actions/orderPageAction'
 import { checkToken } from "../../redux/actions/authActions";
 import { getUser } from "../../redux/actions/profilePageActions";
 import { ToastContainer } from "react-toastify";
+import Loading from "../../common/Loading";
 
 
 let ProductPageContainer = (props) => {
@@ -28,9 +29,13 @@ let ProductPageContainer = (props) => {
     props.auth && props.checkToken(props.auth);
     props.auth && props.getUser();
     props.auth && props.getUserBasket();
-  },[]);
+  },[ props.auth]);
+
+
+
 
   return (
+ 
     <>
       <ProductCarousel />
       <ProductContent
@@ -40,6 +45,8 @@ let ProductPageContainer = (props) => {
         productPage={props.productPage}
         closeProductPanel={props.closeProductPanel}
         userProductCount={props.userProductCount}
+        basketCall={props.basketCall}
+        panelOpenClose={props.panelOpenClose}
         getProductCategories={(id) => props.getProductCategories(id)}
         loadMore = {(n) => props.getProducts(n)}
         getProducts={()=>props.getAllProducts()}
@@ -69,7 +76,10 @@ let mapStateToProps = (state) => ({
   userProductCount:state.userInfo.userProductCount,
   auth: state.authentication.auth,
   closeProductPanel:state.userInfo.closeProductPanel,
-  addLoading:state.productPage.addLoading
+  addLoading:state.productPage.addLoading,
+  isLoading:state.productPage.isLoading,
+  basketCall:state.userInfo.basketCall,
+  panelOpenClose:state.productPage.panelOpenClose,
 });
 
 export default compose(

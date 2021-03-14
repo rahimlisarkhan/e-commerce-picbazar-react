@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaMinus, FaPlus, FaPlusCircle } from 'react-icons/fa';
+import Loading from '../../common/Loading';
 import ProductList from '../ProductPage/ProductList';
 import Blogform from './Blogform';
 import BlogList from './BlogList';
@@ -10,6 +11,8 @@ let BlogPagePageSection = (props) => {
     
 
     return (
+        props.isLoading ?
+        <Loading/> :
         <div className="owner-container__section">
             <h1>Market Blog</h1>
             <span className='totalAmount' >Total blog {props.blogs && props.blogs.length} </span>

@@ -33,7 +33,11 @@ let FormAddProduct = (props) => {
   const [viewCategoryPanel, setCategoryPanelView] = useState(false);
   const [categoriesData, setCategoriesData] = useState(null)
 
-  useEffect(() =>{ setCategoriesData(props.categories)},[props.categories])
+  useEffect(() =>{ 
+    setCategoriesData(props.categories)
+  
+    setCategoryPanelView(props.openLoginPage)
+  },[props.categories,props.openLoginPage])
 
 
   return (

@@ -5,5 +5,16 @@
     "carouseldesc":"Sağlıklı yiyeceklerinizi ve atıştırmalıklarınızı her gün tüm gün kapınıza getirin",
     "searchPlaceholder":"Ürünlerinizi buradan arayın...",
     "searchbtn":"Arama",
-    "choose": "Seçin"
+    "choose": "Seçin",
+    "item":"ürün",
+    "help": "Yardım Gerekiyor",
+    "service1": "Müşteri Hizmetleri ile nasıl iletişime geçilir?",
+    "service2": "Uygulama kurulumu başarısız oldu, sistem bilgileri nasıl güncellenir?",
+    "service3": "Web sitesi yanıtı zaman alıyor, nasıl iyileştirilebilir?",
+    "service4": "Nasıl hesap oluşturabilirim?",
+    "service1answer": "Müşteri Deneyimi Ekibimiz haftanın 7 günü hizmetinizde ve iletişime geçmek için 2 yol sunuyoruz.E-posta ve Sohbet. Hızlı yanıt vermeye çalışıyoruz, bu nedenle yanıt için çok uzun süre beklemenize gerek yok !.",
+    "service2answer": "Lütfen belgeleri dikkatlice okuyun. Bu sorunla ilgili bazı çevrimiçi video eğitimlerimiz de var. Sorun devam ederse, lütfen destek forumunda bir çağrı açın",
+    "service3answer": "İlk önce, lütfen internet bağlantınızı kontrol edin. Bu konuyla ilgili bazı çevrimiçi video eğitimlerimiz de var. Sorun devam ederse, lütfen destek forumunda bir çağrı açın.",
+    "service4answer": "Kişisel kullanım için bir hesap açmak istiyorsanız, bunu telefonla veya çevrimiçi olarak yapabilirsiniz. Çevrimiçi bir hesap açmak yalnızca birkaç dakika sürer."
+
 }

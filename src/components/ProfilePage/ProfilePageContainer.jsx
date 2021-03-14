@@ -26,6 +26,7 @@ import { ToastContainer } from 'react-toastify'
         <div className='owner-container' >
             <OwnOrderPageNavbar logout={()=> props.logout(props.history.push)} />
             <ProfilePageSection userInfo={props.userInfo}
+                                isLoading ={props.isLoading}
                                 getUser={() => props.getUser()}
                                 createUserInfo={(data) => props.createUserInfo(data)}
                                />
@@ -42,7 +43,7 @@ let mapStateToProps = (state)=>({
     userInfo:state.userInfo.user,
     auth:state.authentication.auth,
     panelOpenClose:state.productPage.panelOpenClose,
-  
+    isLoading:state.productPage.isLoading
 
 })
 

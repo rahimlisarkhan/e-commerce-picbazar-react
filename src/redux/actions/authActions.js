@@ -5,8 +5,10 @@ import {baseURL} from './baseURL'
 
 //Register
 export const getRegisterAuth = data => dispatch => {
+    dispatch({type:type.GET_SIGNUP_PAGE, payload:null})
     baseURL.post('/accounts/api/register/',data)
             .then((resp) =>{ dispatch({type:type.GET_LOGIN_PAGE, payload:true }) 
+                             dispatch({type:type.GET_SIGNUP_PAGE, payload:false})
                              toast.success('Successfully register')})
             .catch((err) => toast.error(err.message))
 }

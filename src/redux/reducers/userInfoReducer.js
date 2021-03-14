@@ -4,6 +4,7 @@ import * as type from "../types"
 let initialState ={
     user:null,
     userBasket:null,
+    basketCall:null,
     userProductCount:[],
     ownProduct:null,
     orderProduct:null,
@@ -41,6 +42,8 @@ export const userInfoReducer = (state=initialState,action) => {
         
         case type.ADD_BLOGS:
             return {...state, blogs:[...state.blogs, action.payload]}
+        case type.BASKET_CALL:
+            return {...state, basketCall:action.payload}
 
         default:
             return state

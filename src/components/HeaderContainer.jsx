@@ -25,35 +25,52 @@ import { getOwnerProduct } from "../redux/actions/ownerPageActions";
 //ICONS
 import { MdDashboard } from "react-icons/md";
 import * as aiIcon from "react-icons/ai";
-import {FaCalendarCheck,FaBlog} from 'react-icons/fa';
+import {FaCalendarCheck,FaBlog, FaQuestionCircle} from 'react-icons/fa';
 import { IoBagCheckSharp } from "react-icons/io5";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 
 
-const HeaderContainer = (props) => {
 
+
+
+const HeaderContainer = (props) => {
+    
+  //Hooks
+  const [langOpen, setLangDrop] = useState(false),
+        [JoinOpen, setJoinPopup] = useState(false),
+        [productAddOpen, setAddPanel] = useState(false),
+        [SignUpOpen, setSignUpPopup] = useState(false),
+        [openProfile, setProfileMenu] = useState(false),
+        [fixnav, setFixNav] = useState(false)
+
+  //BOM
+  window.addEventListener('scroll',function(){
+      window.scrollY >800 ? setFixNav(true) : setFixNav(false);
+
+    })
+  
+  //useEffects
   useEffect(() => {
     props.panelOpenClose && props.getCategories();
     
-    
     setJoinPopup(props.openLoginPage)
+    setAddPanel(props.openLoginPage)
+    setSignUpPopup(props.closeSignUpPage)
     
-  },[props.openLoginPage]);
+  },[props.openLoginPage,props.closeSignUpPage]);
   
-  console.log(props);
-  
-  //Hooks
-  const [langOpen, setLangDrop] = useState(false),
-        [JoinOpen, setJoinPopup] = useState(true),
-        [productAddOpen, setAddPanel] = useState(props.isLoading),
-        [SignUpOpen, setSignUpPopup] = useState(false),
-        [openProfile, setProfileMenu] = useState(false);
-
-
-  console.log(JoinOpen);
 
   return (
-    <nav className="navbar ">
+    <>
+    {/* Desktop nav */}
+    <nav className={fixnav ? "navbar nav-fix" : "navbar"}>
+            
+    <button className='hamburger-btn'>
+         <span></span>
+         <span></span>
+         <span></span>
+      </button>
+      
       <div className="navbar__logo-content">
         <NavLink to="/picbazar/" exact>
           <img src={logo} alt="logo" />
@@ -61,6 +78,12 @@ const HeaderContainer = (props) => {
       </div>
 
       <div className="navbar__land-join">
+
+           {/* faq */}
+           <NavLink to="/picbazar/faq" className="faq">
+               <FaQuestionCircle/> {translate("help")}
+          </NavLink>
+     
 
         {/* lang dropdown */}
         <div className={langOpen ? "dropdown-lang openshow" : "dropdown-lang"}>
@@ -114,9 +137,7 @@ const HeaderContainer = (props) => {
             Pусский
           </span>
         </div>
-
-        {(props.location.pathname === "/picbazar" ||
-          props.location.pathname === "/picbazar/") && (
+        
           <button className="lang" onClick={() => setLangDrop(!langOpen)}>
             <span>
               <img
@@ -126,13 +147,9 @@ const HeaderContainer = (props) => {
             </span>
             {translate("choose")}
           </button>
-        )}
 
 
-        {/* faq */}
-        <button className="lang">
-          FAQ
-        </button>
+     
 
         {/* owner product add */}
         {props.location.pathname === "/picbazar/owner-order" && (
@@ -152,6 +169,7 @@ const HeaderContainer = (props) => {
                               getCategories={() => props.getCategories()}
                               createAddProduct={(data) => props.createAddProduct(data)}
                               getOwnerProduct={() => props.getOwnerProduct()}
+                              openLoginPage={props.openLoginPage}
                 />
               <button className='closePanel'
                       onClick={() => setAddPanel(!productAddOpen)} >  <aiIcon.AiOutlineClose /></button>
@@ -165,6 +183,7 @@ const HeaderContainer = (props) => {
             </button>
           </>
         )}
+
 
 
         {/* register */}
@@ -184,6 +203,7 @@ const HeaderContainer = (props) => {
         )}
 
 
+
         {/* join popup */}
         <div className={JoinOpen ? "popup-join join-show" : "popup-join "}>
           <JoinPopup getLoginAuth={(data) => props.getLoginAuth(data)} />
@@ -199,6 +219,8 @@ const HeaderContainer = (props) => {
         )}
 
 
+
+
         {/* Profile menu */}
         {(props.user && props.auth) && (
           <div
@@ -212,7 +234,7 @@ const HeaderContainer = (props) => {
 
             <div
               className={
-                openProfile
+                !openProfile
                   ? "profile__content__dropMenu profile-show"
                   : "profile__content__dropMenu"
               }
@@ -238,19 +260,31 @@ const HeaderContainer = (props) => {
             </div>
           </div>
         )}
+        
       </div>
+
     </nav>
+    
+
+    {/* Mobile nav */}
+    <nav className='navbar-mobile'>
+        
+    </nav>
+    </>
   );
 };
 
+
 let mapStateToProps = (state) => ({
   openLoginPage: state.authentication.openLoginPage,
+  closeSignUpPage:state.authentication.closeSignUpPage,
   user: state.userInfo.user,
   auth: state.authentication.auth,
   categories:state.productPage.categories,
   panelOpenClose:state.productPage.panelOpenClose,
   isLoading:state.productPage.isLoading
 });
+
 
 export default compose(
   connect(mapStateToProps,{ getRegisterAuth,

@@ -22,6 +22,15 @@ let ProductCarousel = () => {
         slidesToShow: 3,
         slidesToScroll: 2,
         arrows:true,
+        responsive:[
+            {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 3,
+                }
+            }
+        ] 
       };
 
       //video setting

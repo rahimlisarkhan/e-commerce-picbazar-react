@@ -5,5 +5,15 @@
     "carouseldesc":"Sağlam qidalarınızı və qəlyanaltılarınızı hər gün qapılarınıza çatdırın",
     "searchPlaceholder":"Məhsullarınızı buradan axtarın...",
     "searchbtn":"Axtarış",
-    "choose":"Seçin"
+    "choose":"Seçin",
+    "item":"məhsul",
+    "help": "Kömək lazımdır",
+    "service1": "Müştəri Xidmətləri ilə necə əlaqə qurmaq olar?",
+    "service2": "Tətbiq quraşdırılması uğursuz oldu, sistem məlumatları necə yenilənir?",
+    "service3": "Veb sayt reaksiyası vaxt tələb edir, necə yaxşılaşdırmaq olar?",
+    "service4": "Necə bir hesab yarada bilərəm?",
+    "service1answer": "Müştəri Təcrübə Qrupumuz həftənin 7 günü işləyir və əlaqə qurmağın iki yolunu təqdim edirik. E-poçt və Sohbet. Tez cavab verməyə çalışırıq, buna görə cavab üçün çox gözləməyiniz lazım deyil!",
+    "service2answer": "Zəhmət olmasa sənədləri diqqətlə oxuyun. Bu məsələ ilə bağlı bəzi onlayn video təlimatlarımız var. Problem davam edərsə, dəstək forumunda bilet açın",
+    "service3answer": "Əvvəlcə, zəhmət olmasa internet bağlantınızı yoxlayın. Bu məsələ ilə bağlı bəzi onlayn video təlimlərimiz də var. Problem qalsa, dəstək forumunda bilet açın.",
+    "service4answer": "Şəxsi istifadə üçün bir hesab açmaq istəyirsinizsə, bunu telefon və ya onlayn olaraq edə bilərsiniz. İnternet hesabı açmaq yalnız bir neçə dəqiqə çəkməlidir."
 }

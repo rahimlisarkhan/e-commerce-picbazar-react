@@ -8,6 +8,7 @@ let initialState ={
     panelOpenClose:false,
     isLoading:false,
     addLoading:false,
+    isLoadingCard:false,
 }
 
 
@@ -39,6 +40,10 @@ export const productPageReducer = (state=initialState,action) => {
         case type.IS_LOADING:
             return {...state, isLoading:action.payload}
         
+        case type.IS_LOADING_CARD:
+            return {...state, isLoadingCard:action.payload}
+        
+                
         case type.ADD_LOADING:
             return {...state, addLoading:action.payload}
         

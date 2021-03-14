@@ -22,6 +22,7 @@ import { ToastContainer } from "react-toastify";
         <div className='owner-container' >
         <OwnOrderPageNavbar  logout={()=> props.logout(props.history.push)} />
         <BlogPagePageSection blogs={props.blogs}
+                             isLoading={props.isLoading}
                              marketName={props.marketName}
                              addBlog={(data) => props.addBlog(data)}
         />
@@ -34,7 +35,8 @@ let mapStateToProps = (state)=>({
   blogs:state.userInfo.blogs,
   auth:state.authentication.auth,
   isLoading:state.productPage.isLoading,
-  marketName:state.userInfo.user
+  marketName:state.userInfo.user,
+  isLoading:state.productPage.isLoading
 })
 
 

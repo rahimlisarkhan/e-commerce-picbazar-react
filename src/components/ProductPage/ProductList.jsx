@@ -17,17 +17,18 @@ let ProductList = (props) => {
 
 
   useEffect(() => {
+    props.basketCall && props.getUserBasket();
     var productCount =
       props.productData &&
       props.userBasket &&
       props.userBasket.find((el) => el.product.id === props.productData.id);
-
+    
     productCount && setCount(productCount.count);
     productCount && setViewCount(productCount.count);
     props.addLoading && setCount(0);
     // props.addLoading &&  props.getUserBasket();
-  }, [props.userBasket, props.addLoading]);
-
+  }, [props.userBasket, props.addLoading,props.basketCall]);
+  
   return (
     <>
       {/* Product Card */}
@@ -109,8 +110,9 @@ let ProductList = (props) => {
                 onClick={() => {
                   setimgView(!imgView);
                   setCount(1);
-                  props.basketProductAdd(props.productData.id, 1);
                   props.getUserBasket();
+                  props.basketProductAdd(props.productData.id, 1);
+                 
                 }}
               >
                 <IoBasketSharp />

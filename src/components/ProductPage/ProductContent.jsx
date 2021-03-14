@@ -5,37 +5,51 @@ import { IoBagCheck } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import ProductBasketLists from "./ProductBasketLists";
 import LoadingCard from "../../common/LoadingCard";
+import translate from "../../lang/translate";
 
 let ProductContent = (props) => {
-  const [basketListShow, setBasketList] = useState(false);
-  const [pageCountNext, setPageCount] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [basketListShow, setBasketList] = useState(false),
+    [pageCountNext, setPageCount] = useState(1),
+    [totalPrice, setTotalPrice] = useState(0),
+    [fixcategory, setFixCategory] = useState(false);
 
-  console.log(props.userBasket);
+  //BOM
+  window.addEventListener("scroll", function () {
+    window.scrollY > 1050 ? setFixCategory(true) : setFixCategory(false);
+  });
 
+  //useEffects
   useEffect(() => {
+    props.basketCall && props.getUserBasket();
+
     let totalPrice = 0;
     props.userBasket &&
-    props.userBasket.map(
+      props.userBasket.map(
         (el) =>
           (totalPrice += parseInt(el.count) * parseFloat(el.product.price))
       );
-    setTotalPrice(totalPrice < 0 ? 0.00 : totalPrice);
-  }, [props.userBasket]);
+    setTotalPrice(totalPrice < 0 ? 0.0 : totalPrice);
+  }, [props.userBasket, props.basketCall]);
 
-  // let limitClick = Math.round(props.productPage.productsLength / 3);
+  let limitClick = Math.round(props.productPage.productsLength/10)+1;
 
-  let limitClick = props.productPage.productsLength;
-
+  console.log(limitClick);
   return (
     <div className="product-content">
       {/* product lists */}
-      <div className="product-content__category">
-        <div className="product-content__category__list">
+      <div className="product-content__category ">
+        <div
+          className={
+            fixcategory
+              ? "product-content__category__list fix-category"
+              : "product-content__category__list "
+          }
+        >
           <ProductCategory
             categories={props.productPage.categories}
             getProducts={props.getProducts}
-            getProductCategories={props.getProductCategories}/>
+            getProductCategories={props.getProductCategories}
+          />
         </div>
       </div>
 
@@ -62,6 +76,7 @@ let ProductContent = (props) => {
               userBasket={props.userBasket}
               getUserBasket={props.getUserBasket}
               addLoading={props.addLoading}
+              basketCall={props.basketCall}
               auth={props.auth}
             />
           ))
@@ -76,7 +91,9 @@ let ProductContent = (props) => {
         >
           <div className="basket-count">
             <IoBagCheck />
-            <span>{props.userBasket && props.userBasket.length} item</span>
+            <span>
+              {props.userBasket && props.userBasket.length} {translate("item")}
+            </span>
           </div>
           <div className="basket-price">
             $ <span>{totalPrice.toFixed(2)}</span>
@@ -109,13 +126,13 @@ let ProductContent = (props) => {
                 basketProductRemove={props.basketProductRemove}
                 basketProductAdd={props.basketProductAdd}
                 getUserBasket={props.getUserBasket}
+                basketCall={props.basketCall}
                 key={el.id}
-                closeProductPanel={props.closeProductPanel}
                 basketData={el}
               />
             ))}
 
-          {props.userBasket && props.userBasket.length === 0  && 
+          {props.userBasket && props.userBasket.length === 0 && (
             <div className="lists__content__null">
               <div className="null-basket-img">
                 <svg
@@ -253,19 +270,23 @@ let ProductContent = (props) => {
               </div>
               <p>No product found</p>
             </div>
-          }
+          )}
         </div>
 
-        <div className="lists__checkout" onClick={()=> { 
-              props.userBasket.map(el => {
-                  props.orderCheckout(el.product.id,el.count)
-                  props.basketProductRemove(el.id)
-                  props.getUserBasket()})
-                }}>
-          <h2 >Checkout</h2>
+        <div
+          className="lists__checkout"
+          onClick={() => {
+            props.userBasket.map((el) => {
+              props.orderCheckout(el.product.id, el.count);
+              props.basketProductRemove(el.id);
+            });
+          }}
+        >
+          <h2>Checkout</h2>
           <span>$ {totalPrice.toFixed(2)} </span>
         </div>
       </div>
+
       <button
         className="loadMore"
         disabled={limitClick === pageCountNext ? true : false}

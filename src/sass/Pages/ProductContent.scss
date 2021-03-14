@@ -15,12 +15,10 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        width: 100%;
         padding: 2rem;
         text-transform: capitalize;
-       
         background-color: rgb(255, 255, 255);
-
+      
         p{
             color: $color-dark;
             width: 95%;
@@ -29,7 +27,7 @@
             align-items: center;
             height: auto;
             padding: 1rem;
-            margin: 1.5rem 0;
+            margin: 1rem 0;
             font-size: 2rem;
             cursor: pointer;
             &:hover{color: $color-green}
@@ -40,12 +38,12 @@
             }
 
             &:hover img{
-                filter: grayscale(100%) invert(100%);
+                filter: grayscale(100%) invert(100%) !important;
             }
 
 
             img{
-                width: 17%;
+                width: 14%;
                 filter: grayscale(100%) !important;
                 margin-right: 1rem;
             }
@@ -606,6 +604,16 @@
         }
     }
 }
+
+
+//fix section
+.fix-category{
+    position: fixed;
+    width: 15%;
+    top: 9%;
+    left: 0;
+}
+
 
 
 //disable btn

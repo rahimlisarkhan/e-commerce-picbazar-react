@@ -10,6 +10,7 @@ import ProductPageContainer from "./components/ProductPage/ProductPageContainer"
 import ProfilePageContainer from "./components/ProfilePage/ProfilePageContainer";
 import YourOrderPageContainer from "./components/YourOrderPage/YourOrderPageContainer";
 import BlogPageContainer from "./components/BlogPage/BlogPageContainer";
+import FAQ from "./components/FAQ"
 
 import en from "./lang/messages/en.json";
 
@@ -32,6 +33,7 @@ let App = () => {
       <Route path="/picbazar/owner-order" component={OwnOrderPageContainer} />
       <Route path="/picbazar/your-order" component={YourOrderPageContainer} />
       <Route path="/picbazar/market-blog" component={BlogPageContainer} />
+      <Route path="/picbazar/faq" component={FAQ} />
       <Redirect from="/" to="/picbazar" />
     </IntlProvider>
   );

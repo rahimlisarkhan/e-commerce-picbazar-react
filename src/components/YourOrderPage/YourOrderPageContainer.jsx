@@ -20,6 +20,7 @@ import YourOrderPageSection from './YourOrderPageSection'
         <OwnOrderPageNavbar logout={()=> props.logout(props.history.push)} />
         <YourOrderPageSection orderProduct={props.orderProduct}
                               location={props.location.pathname}
+                              isLoading={props.isLoading}
                               orderRemove={(id) => props.orderRemove(id)}
                               getYourProduct={()=> props.getYourProduct() }
                            />

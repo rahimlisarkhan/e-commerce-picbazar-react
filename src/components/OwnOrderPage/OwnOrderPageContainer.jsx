@@ -19,7 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 
     }, [])
 
-
+    
 
     return (
         <div className='owner-container' >
