@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProductCategory from "./ProductCategory";
 import ProductList from "./ProductList";
 import { IoBagCheck } from "react-icons/io5";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiFillCloseCircle, AiOutlineClose } from "react-icons/ai";
 import ProductBasketLists from "./ProductBasketLists";
 import LoadingCard from "../../common/LoadingCard";
 import translate from "../../lang/translate";
@@ -11,12 +11,32 @@ let ProductContent = (props) => {
   const [basketListShow, setBasketList] = useState(false),
     [pageCountNext, setPageCount] = useState(1),
     [totalPrice, setTotalPrice] = useState(0),
-    [fixcategory, setFixCategory] = useState(false);
+    [fixcategory, setFixCategory] = useState(false),
+    [mobileShow, setMobileShow] = useState(false),
+    [mobileShowCategory, setMobileShowCategory] = useState(false);
 
   //BOM
-  window.addEventListener("scroll", function () {
-    window.scrollY > 1050 ? setFixCategory(true) : setFixCategory(false);
-  });
+  if (window.matchMedia("(min-width: 900px)").matches) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 1050) {
+        setFixCategory(true);
+        setMobileShowCategory(true);
+      } else {
+        setFixCategory(false);
+      }
+    });
+  }
+
+  if (window.matchMedia("(max-width: 900px)").matches) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 250) {
+        setFixCategory(true);
+        setMobileShowCategory(false);
+      } else {
+        setFixCategory(false);
+      }
+    });
+  }
 
   //useEffects
   useEffect(() => {
@@ -31,27 +51,40 @@ let ProductContent = (props) => {
     setTotalPrice(totalPrice < 0 ? 0.0 : totalPrice);
   }, [props.userBasket, props.basketCall]);
 
-  let limitClick = Math.round(props.productPage.productsLength/10)+1;
+  let limitClick = Math.round(props.productPage.productsLength / 10) + 1;
 
   console.log(limitClick);
   return (
     <div className="product-content">
+      <span className="filter" onClick={() => setMobileShow(!mobileShow)}>
+        Filter
+      </span>
+
       {/* product lists */}
-      <div className="product-content__category ">
-        <div
-          className={
-            fixcategory
-              ? "product-content__category__list fix-category"
-              : "product-content__category__list "
-          }
-        >
-          <ProductCategory
-            categories={props.productPage.categories}
-            getProducts={props.getProducts}
-            getProductCategories={props.getProductCategories}
-          />
+      {(mobileShowCategory || mobileShow) && (
+        <div className="product-content__category ">
+          <div
+            className={
+              fixcategory
+                ? "product-content__category__list fix-category"
+                : "product-content__category__list "
+            }
+          >
+            <button
+              className="categoryClosed"
+              onClick={() => setMobileShow(!mobileShow)}
+            >
+              {" "}
+              <AiFillCloseCircle />
+            </button>
+            <ProductCategory
+              categories={props.productPage.categories}
+              getProducts={props.getProducts}
+              getProductCategories={props.getProductCategories}
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* product categories */}
       <div className="product-content__products">

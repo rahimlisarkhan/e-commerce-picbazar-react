@@ -1,8 +1,10 @@
 import React from "react";
+import { AiFillCloseCircle } from "react-icons/ai";
 
 let ProductCategory = (props) => {
   return (
     <>
+     <button className='categoryClosed' > <AiFillCloseCircle/></button>
       <p onClick={() => props.getProducts()}>
             <img
               src='https://static.thenounproject.com/png/1603774-200.png'

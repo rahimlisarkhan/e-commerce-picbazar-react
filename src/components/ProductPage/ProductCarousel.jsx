@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import translate from '../../lang/translate';
 import { FormattedMessage } from 'react-intl';
+import ReactTypingEffect from 'react-typing-effect';
 
 let ProductCarousel = () => {
     
@@ -48,7 +49,6 @@ let ProductCarousel = () => {
             <div className='product-carousel__desc'>
 
                 
-          
             <h1>{translate("carouseltitle")}</h1>
             <p>{translate("carouseldesc")}</p>
 

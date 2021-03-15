@@ -3,6 +3,7 @@
     flex-direction: column;
     background-color: rgb(241, 241, 241);
     border:.1rem solid rgb(236, 236, 236);
+
     span{
         position: absolute;
         top: 0;
@@ -30,9 +31,24 @@
         flex-direction: column;
         color: rgb(0, 0, 0);
         // text-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.555);
+
+        @include respond(phone){
+            height: 65rem;
+            background-image: url("../../img/headback.png");
+            background-size: cover;
+        }
+    
         h1{
             font-weight: bold;
             text-transform: capitalize;
+
+            @include respond(phone){
+                text-align: center;
+                letter-spacing: .1rem;
+                line-height: 1.4;
+                width: 80%;
+                font-size: 2.5rem;
+            }
           
         }
 
@@ -41,6 +57,11 @@
             text-align: center;
             margin: 2rem;
             font-size: 2.5rem;
+
+            @include respond(phone){
+                width: 80%;
+                font-size: 1.7rem;
+            }
         }
 
         .input-group{
@@ -52,6 +73,11 @@
            margin-top: 3rem;
         //    box-shadow: 0 .1rem 2rem rgba(0, 0, 0, 0.432);
            border-radius: 2rem;
+
+           @include respond(phone){
+            width: 80%;
+            height: 4rem;
+        }
             input{
                 width: 80%;
                 height: 100%;
@@ -60,6 +86,10 @@
                 text-align: center;
                 outline: none;
                 border-radius: 1rem 0 0 1rem ;
+
+                @include respond(phone){
+                    font-size: 1.5rem;
+                }
             }
             button{
                 width: 20%;
@@ -75,6 +105,10 @@
                 padding: 0 2rem;
                 cursor: pointer;
                 font-size: 1.8rem;
+
+                @include respond(phone){
+                    font-size: 1.4rem;
+                }
 
                 &:hover{
                     background-color:rgb(8, 131, 106);
@@ -101,3 +135,9 @@
     }
 }
 
+.bg-video{
+    @include respond(phone){
+
+        display: none;
+    }
+}

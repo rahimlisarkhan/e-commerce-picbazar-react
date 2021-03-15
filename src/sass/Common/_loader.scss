@@ -16,6 +16,7 @@
     position: relative;
     width: 80px;
     height: 80px;
+
   
     div {
       position: absolute;
@@ -95,8 +96,11 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.26);
 
+
   .content {
     padding: 20px 30px;
+
+ 
   }
 }
 
@@ -119,11 +123,15 @@
 
   h2 {
     height: 5.5rem;
+
+
   }
 
   p {
     margin-top: 2rem;
     height: 2.2rem;
+
+
   }
 }
 

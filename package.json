@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -22,6 +23,7 @@
     "react-select": "^4.1.0",
     "react-slick": "^0.28.0",
     "react-toastify": "^7.0.3",
+    "react-typing-effect": "^2.0.5",
     "react-video-tag": "0.0.10",
     "reactstrap": "^8.9.0",
     "redux": "^4.0.5",

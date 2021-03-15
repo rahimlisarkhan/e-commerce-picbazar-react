@@ -13,11 +13,10 @@ import {
   getAllProducts,
   getUserBasket,
 } from "../../redux/actions/productPageActions";
-import {orderCheckout} from '../../redux/actions/orderPageAction'
+import {orderCheckout , getYourProduct} from '../../redux/actions/orderPageAction'
 import { checkToken } from "../../redux/actions/authActions";
 import { getUser } from "../../redux/actions/profilePageActions";
 import { ToastContainer } from "react-toastify";
-import Loading from "../../common/Loading";
 
 
 let ProductPageContainer = (props) => {
@@ -28,6 +27,7 @@ let ProductPageContainer = (props) => {
     props.location.pathname === '/picbazar' && props.getProducts();
     props.getCategories();
     props.auth && props.checkToken(props.auth);
+    props.auth && props.getYourProduct();   
     props.auth && props.getUser();
     props.auth && props.getUserBasket();
   },[ props.auth]);
@@ -88,6 +88,7 @@ export default compose(
     getProducts,
     getCategories,
     getUser,
+    getYourProduct,
     getProductCategories,
     basketProductAdd,
     basketProductRemove,
