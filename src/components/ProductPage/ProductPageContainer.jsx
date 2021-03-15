@@ -24,13 +24,13 @@ let ProductPageContainer = (props) => {
   
   useEffect(() => {
 
+    props.auth && props.checkToken(props.auth);
     props.location.pathname === '/picbazar' && props.getProducts();
     props.getCategories();
-    props.auth && props.checkToken(props.auth);
     props.auth && props.getYourProduct();   
     props.auth && props.getUser();
     props.auth && props.getUserBasket();
-  },[ props.auth]);
+  },[]);
 
 
 

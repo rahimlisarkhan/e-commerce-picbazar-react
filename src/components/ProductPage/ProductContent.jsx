@@ -5,15 +5,19 @@ import { IoBagCheck } from "react-icons/io5";
 import { AiFillCloseCircle, AiOutlineClose } from "react-icons/ai";
 import ProductBasketLists from "./ProductBasketLists";
 import LoadingCard from "../../common/LoadingCard";
+import cardimg from '../../img/card2.png'
 import translate from "../../lang/translate";
 
 let ProductContent = (props) => {
+  
   const [basketListShow, setBasketList] = useState(false),
-    [pageCountNext, setPageCount] = useState(1),
-    [totalPrice, setTotalPrice] = useState(0),
-    [fixcategory, setFixCategory] = useState(false),
-    [mobileShow, setMobileShow] = useState(false),
-    [mobileShowCategory, setMobileShowCategory] = useState(false);
+        [pageCountNext, setPageCount] = useState(1),
+        [totalPrice, setTotalPrice] = useState(0),
+        [fixcategory, setFixCategory] = useState(false),
+        [mobileShow, setMobileShow] = useState(false),
+        [mobileShowCategory, setMobileShowCategory] = useState(false),
+        [paymentPanel, setPaymentPanel] = useState(false)
+
 
   //BOM
   if (window.matchMedia("(min-width: 900px)").matches) {
@@ -80,6 +84,7 @@ let ProductContent = (props) => {
             <ProductCategory
               categories={props.productPage.categories}
               getProducts={props.getProducts}
+              setMobileShow={() => setMobileShow(!mobileShow)}
               getProductCategories={props.getProductCategories}
             />
           </div>
@@ -308,18 +313,49 @@ let ProductContent = (props) => {
 
         <div
           className="lists__checkout"
-          onClick={() => {
-            props.userBasket.map((el) => {
-              props.orderCheckout(el.product.id, el.count);
-              props.basketProductRemove(el.id);
-            });
-          }}
-        >
+          onClick={() => {totalPrice > 0 && setPaymentPanel(!paymentPanel)}}>
           <h2>Checkout</h2>
           <span>$ {totalPrice.toFixed(2)} </span>
         </div>
       </div>
 
+
+
+
+  {/* payments panel */}
+  <div className={paymentPanel ? "payments-container payments-show" : "payments-container"} >
+
+<div className="payments-container__content">
+    <div className="payments-container__content__img">
+        <img src={cardimg} alt="Card"/>
+    </div>
+    <div className="payments-container__content__group">
+    <div className="payments-container__content__group__input">
+        <input type="number" placeholder='4578 5745 2123 2545' />
+        <input type="number" placeholder='01 / 12'/>
+        <input type="number" placeholder='628' />
+    </div>
+    <div className="payments-container__content__group__btn">
+         
+       <button onClick={() => setPaymentPanel(!paymentPanel)}> Cancel</button>
+       <button  onClick={() => {
+            props.userBasket.map((el) => {
+              props.orderCheckout(el.product.id, el.count);
+              props.basketProductRemove(el.id);
+            });
+            setPaymentPanel(false)
+          }}> Payment</button>
+
+    </div>
+    </div>
+ 
+</div>
+</div> 
+
+
+
+
+      {/* loadmore */}
       <button
         className="loadMore"
         disabled={limitClick === pageCountNext ? true : false}

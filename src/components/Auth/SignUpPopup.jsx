@@ -80,12 +80,12 @@ return (
               </div>
               <div className="form-group">
                   <aiIcon.AiOutlineUser className='joinIcon'/>
-                  <Field name='first_name' type="text" placeholder='first name'/>
+                  <Field name='first_name' type="text" placeholder='marka name'/>
                   <p><ErrorMessage name="first_name" /></p>
               </div>
               <div className="form-group">
                   <aiIcon.AiOutlineUser className='joinIcon'/>
-                  <Field name='last_name' type="text" placeholder='last name'/>
+                  <Field name='last_name' type="text" placeholder='store license'/>
                   <p><ErrorMessage name="last_name" /></p>
               </div>
               <div className="form-group">
@@ -118,7 +118,7 @@ return (
                       name="image"
                       id="image"
                       onChange={(e) =>formik.setFieldValue("image", e.target.files[0])}/>
-                    <RiFolderUploadFill /> <span>Upload profile image </span>
+                    <RiFolderUploadFill /> <span>Upload market logo </span>
                   </label>
                   <p><ErrorMessage name="image" /></p>
               </div>

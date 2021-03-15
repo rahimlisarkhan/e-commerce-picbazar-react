@@ -17,7 +17,9 @@ import {AiOutlineMinus,AiOutlinePlus,AiOutlineClose} from 'react-icons/ai'
     return (
         !closePanel &&
         <div className='product-basket-card'>
-            
+
+          
+
             <div className="card-count">
             <AiOutlineMinus  onClick={() => {setCount(prevCount => prevCount <= 0 ? 0 : prevCount - 1)
                                              props.basketProductAdd(props.basketData.product.id,count-1)
@@ -40,7 +42,7 @@ import {AiOutlineMinus,AiOutlinePlus,AiOutlineClose} from 'react-icons/ai'
             <div className="card-desc">
                 <h2>{props.basketData.product.title}</h2>
                 <p>${props.basketData.product.price}</p>
-                <span> {props.basketData.count} x {props.basketData.product.amount_by_unit} 
+                <span> {(props.basketData.count * props.basketData.product.amount_by_unit).toFixed(2)} 
                                  {props.basketData.product.unit}</span>
             </div>
 
