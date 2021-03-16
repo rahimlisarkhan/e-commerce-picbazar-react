@@ -10,7 +10,6 @@ import {AiOutlineMinus,AiOutlinePlus,AiOutlineClose} from 'react-icons/ai'
 
     useEffect(() =>{
         setCount(props.basketData.count)
-        props.basketCall && props.getUserBasket()
             
     },[props.basketData,props.basketCall])
 

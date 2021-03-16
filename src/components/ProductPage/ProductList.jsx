@@ -17,7 +17,6 @@ let ProductList = (props) => {
 
 
   useEffect(() => {
-    props.basketCall && props.getUserBasket();
     var productCount =
       props.productData &&
       props.userBasket &&

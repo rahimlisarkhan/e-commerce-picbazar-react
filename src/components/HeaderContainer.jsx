@@ -36,7 +36,6 @@ import {
   FaCalendarCheck,
   FaBlog,
   FaQuestionCircle,
-  FaClosedCaptioning,
 } from "react-icons/fa";
 import { IoBagCheckSharp } from "react-icons/io5";
 import { RiLogoutBoxRFill } from "react-icons/ri";
@@ -316,13 +315,18 @@ const HeaderContainer = (props) => {
           {!props.auth && (
             <button
               className="join"
-              onClick={() => setSignUpPopup(!SignUpOpen)}
+              onClick={() =>{ setSignUpPopup(!SignUpOpen)
+                setMobileNavClose(!mobileNavClose)
+              }}
             >
               {translate("singup")}
             </button>
           )}
           {!props.auth && (
-            <button className="join" onClick={() => setJoinPopup(!JoinOpen)}>
+            <button className="join" onClick={() =>{ setJoinPopup(!JoinOpen)
+            
+              setMobileNavClose(!mobileNavClose)
+            }}>
               {translate("login")}
             </button>
           )}

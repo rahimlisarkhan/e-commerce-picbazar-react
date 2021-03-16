@@ -44,7 +44,6 @@ let ProductContent = (props) => {
 
   //useEffects
   useEffect(() => {
-    props.basketCall && props.getUserBasket();
 
     let totalPrice = 0;
     props.userBasket &&

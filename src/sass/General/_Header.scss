@@ -141,6 +141,11 @@
             background-color: rgb(0, 197, 141);
             color: white;
             border-radius: 1rem;
+
+            @include respond(phone){
+                display: none;
+            }
+        
         }
     }
 
@@ -186,6 +191,7 @@
     align-items: center;
     background-color: rgba(black, .7);
 
+  
     .close {
         position: absolute;
         background-color: white;

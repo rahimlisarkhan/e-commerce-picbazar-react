@@ -49,7 +49,7 @@ let ProductCarousel = () => {
             <div className='product-carousel__desc'>
 
                 
-            <h1>{translate("carouseltitle")}</h1>
+            <h1>{  translate("carouseltitle")  }</h1>
             <p>{translate("carouseldesc")}</p>
 
                 <div className="input-group">
